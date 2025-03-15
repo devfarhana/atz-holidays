@@ -1,0 +1,80 @@
+/*============================
+ 33.sidebar
+============================*/
+
+.user-sidebar{
+    background: $white;
+    box-shadow: none;
+    .submenu {
+      ul {
+        display: none;
+        margin-left: 22px;
+      }
+      .menu-arrow {
+        display: inline-block;
+        font-family: 'FontAwesome';
+        text-rendering: auto;
+        line-height: 40px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 16px;
+        float: right;
+        &::before {
+          content: "\f105";
+        }
+      }
+      .subdrop {
+        .menu-arrow {
+          &::before {
+            content: "\f107";
+          }
+        }
+      }
+    }
+    .user-sidebar-header{
+      padding: 20px;
+      .profile-content{
+        padding: 8px;
+        border: 1px solid $light;
+      }
+    }
+    .user-sidebar-body{
+     ul{
+      li{
+        a {
+          color: $gray-600;
+          padding: 8px;
+          font-size:  $font-size-14;
+          font-weight: 500;
+          color: $gray-600;
+          
+          &:hover,&.active{
+            color: $primary;
+          }
+          i{
+            margin-right: 10px;
+            font-size:  $font-size-14;
+          }
+        }
+        .message-content{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .msg-count{
+            width: 24px;
+            height: 24px;
+            background-color: $teal;
+            padding: 4px;
+            font-size: $font-size-12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+          }
+        }
+      }
+     }
+    
+      
+    }
+  }
