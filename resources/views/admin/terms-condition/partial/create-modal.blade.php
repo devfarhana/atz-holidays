@@ -1,4 +1,4 @@
-<div class="modal fade" id="kt_modal_create_faq" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_modal_create_term" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <!--begin::Modal content-->
@@ -6,7 +6,7 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2>Create Faq</h2>
+                <h2>Create Terms & Condition</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -15,7 +15,7 @@
             <!--end::Modal header-->
             <!--begin::Modal body-->
             <div class="modal-body py-lg-10 px-lg-10">
-                <form action="{{ route('faq.store') }}" method="POST">
+                <form action="{{ route('terms-condition.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- TITLE -->
@@ -27,9 +27,9 @@
 
                         <!--  Details -->
                         <div class="mb-7 col-12">
-                            <label class="form-label">Details</label>
-                            <textarea name="details" class="form-control" id="" cols="10" rows="5" placeholder="Write Here..."></textarea>
-                            @error('details') <span class="text-danger">{{ $message }}</span> @enderror
+                            <label class="form-label">Description</label>
+                            <textarea type="text" class="form-control description" name="description"></textarea>
+                            @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <!-- Submit Button -->
                         <div class="d-flex justify-content-end">
@@ -45,3 +45,17 @@
     <!--end::Modal dialog-->
 </div>
 
+@push('script')
+    <script>
+         $(document).ready(function () {
+        $('.description').summernote({
+            height: 300, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: true // set focus to editable area after initializing summernote
+        });
+    })
+    </script>
+
+
+@endpush

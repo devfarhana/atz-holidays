@@ -305,7 +305,7 @@
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
-                    {{-- <div class="menu-item">
+                 <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link {{ Route::currentRouteName() === 'privacy-policy.index' ? 'active' : '' }}"
                             href="{{ route('privacy-policy.index') }}">
@@ -328,7 +328,7 @@
                             <span class="menu-title">Terms & Condition</span>
                         </a>
                         <!--end:Menu link-->
-                    </div> --}}
+                    </div>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->

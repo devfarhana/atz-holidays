@@ -1,4 +1,4 @@
-<div class="modal fade" id="kt_modal_edit_faq_{{ $faq->id }}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_modal_edit_term_{{ $term->id }}" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <!--begin::Modal content-->
@@ -6,7 +6,7 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2>Edit Faq</h2>
+                <h2>Edit Terms & Condition</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -21,7 +21,7 @@
             <!--begin::Modal body-->
             <div class="modal-body py-lg-10 px-lg-10">
                 <!-- Update Form -->
-                <form action="{{ route('faq.update', $faq->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('terms-condition.update', $term->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
 
@@ -29,12 +29,13 @@
                       <!-- Title -->
                       <div class=" mb-7 col-12">
                         <label class="form-label">Title</label>
-                        <input type="text" class=" form-control" name="title"  value="{{ old('title', $faq->title) }}"  />
+                        <input type="text" class=" form-control" name="title"  value="{{ old('title', $term->title) }}"  />
                     </div>
                     <!--Details -->
                     <div class=" mb-7 col-12">
-                        <label class="form-label">Details</label>
-                        <textarea name="details" class="form-control" id="" cols="10" rows="5"value="{{ old('details', $faq->details) }}" >{{$faq->details}}</textarea>
+                        <label class="form-label">Description</label>
+                        <textarea type="text" class="form-control description" name="description">{{ old('description', $term->description) }}</textarea>
+                        @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                         <!-- Submit Button -->
                         <div>
@@ -49,3 +50,17 @@
     </div>
     <!--end::Modal dialog-->
 </div>
+@push('script')
+    <script>
+         $(document).ready(function () {
+        $('.description').summernote({
+            height: 300, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: true // set focus to editable area after initializing summernote
+        });
+    })
+    </script>
+
+
+@endpush
