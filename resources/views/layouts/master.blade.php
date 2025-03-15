@@ -242,22 +242,22 @@
                                     <h5>Quick Links</h5>
                                     <ul class="footer-menu">
                                         <li>
-                                            <a href="about-us.html">About Us</a>
+                                            <a href="{{route('aboutus')}}">About Us</a>
                                         </li>
                                         <li>
-                                            <a href="news-blog.php"add-flight.html>News & Blog</a>
+                                            <a href="#">News & Blog</a>
                                         </li>
                                         <li>
-                                            <a href="blog-grid.html">Custom Tour Package</a>
+                                            <a href="#">Custom Tour Package</a>
                                         </li>
                                         <li>
-                                            <a href="privacy-policy.php">Privacy Policy</a>
+                                            <a href="{{route('privacyPolicy')}}">Privacy Policy</a>
                                         </li>
                                         <li>
-                                            <a href="terms-condition.php">Terms and Conditions</a>
+                                            <a href="{{route('termsCondition')}}">Terms and Conditions</a>
                                         </li>
                                         <li>
-                                            <a href="faq.php">FAQ's</a>
+                                            <a href="{{route('faq')}}">FAQ's</a>
                                         </li>
                                     </ul>
                                 </div>
