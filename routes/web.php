@@ -15,15 +15,16 @@ use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HajjPackageController;
 use App\Http\Controllers\Admin\HajjPackageInfoController;
 use App\Http\Controllers\Admin\HowItWorkController;
 use App\Http\Controllers\Admin\NoticeTypeController;
-use App\Http\Controllers\Admin\PackageCategoryController;
-use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PackageTourController;
 use App\Http\Controllers\Admin\PackageTourInfoController;
 use App\Http\Controllers\Admin\PopularDestinationController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\TermsConditionController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\WhyBookController;
 use App\Http\Controllers\FrontEnd\AboutUsController as FrontEndAboutUsController;
@@ -34,6 +35,9 @@ use App\Http\Controllers\FrontEnd\PackageController as FrontEndPackageController
 // Route::view('/', 'frontend.index');
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/terms-condition', [IndexController::class, 'termsCondition'])->name('termsCondition');
+Route::get('/faq', [IndexController::class, 'faq'])->name('faq');
 Route::get('/home/aboutus', [FrontEndAboutUsController::class, 'aboutUs'])->name('aboutus');
 Route::get('/home/team', [ExpertTeamController::class, 'team'])->name('team');
 Route::get('/home/blog', [FrontEndBlogController::class, 'blog'])->name('blog');
@@ -278,6 +282,28 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/dashboard/notice-type', NoticeTypeController::class);
     Route::get('/dashboard/notice-type/delete/{id}', [NoticeTypeController::class, 'destroy'])->name('notice-type.destroy');
     Route::get('/dashboard/notice-type/toggle-status/{id}', [NoticeTypeController::class, 'toggleStatus'])->name('notice-type.toggle-status');
+});
+
+Route::prefix('/dashboard')->controller(FaqController::class)->group(function () {
+    Route::get('/faq', 'index')->name('faq.index');
+    Route::post('/faq/store', 'store')->name('faq.store');
+    Route::get('/faq/toggle-status/{id}', 'toggleStatus')->name('faq.toggle-status');
+    Route::put('/faq/update/{id}', 'update')->name('faq.update');
+    Route::delete('/faq/destroy/{id}', 'destroy')->name('faq.destroy');
+});
+Route::prefix('/dashboard')->controller(TermsConditionController::class)->group(function () {
+    Route::get('/terms-condition', 'index')->name('terms-condition.index');
+    Route::post('/terms-condition/store', 'store')->name('terms-condition.store');
+    Route::get('/terms-condition/toggle-status/{id}', 'toggleStatus')->name('terms-condition.toggle-status');
+    Route::put('/terms-condition/update/{id}', 'update')->name('terms-condition.update');
+    Route::delete('/terms-condition/destroy/{id}', 'destroy')->name('terms-condition.destroy');
+});
+Route::prefix('/dashboard')->controller(PrivacyPolicyController::class)->group(function () {
+    Route::get('/privacy-policy', 'index')->name('privacy-policy.index');
+    Route::post('/privacy-policy/store', 'store')->name('privacy-policy.store');
+    Route::get('/privacy-policy/toggle-status/{id}', 'toggleStatus')->name('privacy-policy.toggle-status');
+    Route::put('/privacy-policy/update/{id}', 'update')->name('privacy-policy.update');
+    Route::delete('/privacy-policy/destroy/{id}', 'destroy')->name('privacy-policy.destroy');
 });
 
 

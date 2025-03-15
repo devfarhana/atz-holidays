@@ -3,26 +3,8 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Models\News;
-
-use App\Models\Team;
-use App\Models\Jorip;
-use App\Models\Sector;
 use App\Models\Slider;
-use App\Models\Survey;
 use App\Models\AboutUs;
-use App\Models\Gallery;
-use App\Models\Visitor;
-use App\Models\Customer;
-use App\Models\Greeting;
-use App\Models\Comission;
-use App\Models\Occupation;
-use App\Models\OurService;
-use App\Models\OpenOpinion;
-use Illuminate\Http\Request;
-use App\Models\MissionVision;
-use App\Models\ComissionMember;
-use App\Models\GalleryCategory;
-use App\Models\QuestionOpinion;
 use App\Http\Controllers\Controller;
 use App\Models\Aboutkeypoint;
 use App\Models\Advertisement;
@@ -32,17 +14,18 @@ use App\Models\ClientTitle;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Destination;
+use App\Models\Faq;
 use App\Models\HajjPackage;
 use App\Models\HajjPackageImages;
 use App\Models\HowWork;
 use App\Models\HowWorkKeypoint;
 use App\Models\NoticeType;
-use App\Models\Package;
-use App\Models\PackageCategory;
 use App\Models\PackageTour;
 use App\Models\PackageTourImages;
+use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\SliderContent;
+use App\Models\TermsCondition;
 use App\Models\Testimonial;
 
 class IndexController extends Controller
@@ -59,6 +42,7 @@ class IndexController extends Controller
         $clients = Client::where('status', true)->get();
         $notices = NoticeType::where('status', true)->get();
         $testimonials = Testimonial::where('status', true)->get();
+
         $blogs = Blog::where('status', true)
             ->orderBy('created_at', 'desc')
             ->limit(3)
@@ -97,7 +81,6 @@ class IndexController extends Controller
 
         $contact = Contact::first();
 
-        $services = OurService::where('status', 1)->get();
         $products = Product::where('status', 1)->latest()->take(3)->get();
         $latestNews = News::latest()->take(3)->get();
         return view(
@@ -124,11 +107,29 @@ class IndexController extends Controller
                 'hotDeals',
                 'packagetourimages',
                 'imageshajjpackage',
-                'services',
                 'products',
                 'latestNews',
                 'contact',
             )
         );
     }
+    public function faq()
+    {
+        $faqs = Faq::where('status', true)->get();
+
+        return view('frontend.faq', compact('faqs'));
+    }
+    public function privacyPolicy()
+    {
+        $privacyPolicy = privacyPolicy::where('status', true)->get();
+
+        return view('frontend.privacy-policy', compact('privacyPolicy'));
+    }
+    public function termsCondition()
+    {
+        $termsCondition = termsCondition::where('status', true)->get();
+
+        return view('frontend.terms-condition', compact('termsCondition'));
+    }
+
 }

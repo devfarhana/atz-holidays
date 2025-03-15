@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('terms_conditions', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

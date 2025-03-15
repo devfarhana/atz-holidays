@@ -291,6 +291,45 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ Route::currentRouteName() === 'faq.index' ? 'active' : '' }}"
+                            href="{{ route('faq.index') }}">
+                            <span class="menu-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                            <span class="menu-title">FAQ</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                 <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ Route::currentRouteName() === 'privacy-policy.index' ? 'active' : '' }}"
+                            href="{{ route('privacy-policy.index') }}">
+                            <span class="menu-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </span>
+                            <span class="menu-title">Privacy & Policy</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ Route::currentRouteName() === 'terms-condition.index' ? 'active' : '' }}"
+                            href="{{ route('terms-condition.index') }}">
+                            <span class="menu-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </span>
+                            <span class="menu-title">Terms & Condition</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
 
                     <!--begin:Menu item-->
                     <div class="menu-item">
