@@ -35,6 +35,9 @@ use App\Http\Controllers\FrontEnd\PackageController as FrontEndPackageController
 // Route::view('/', 'frontend.index');
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/terms-condition', [IndexController::class, 'termsCondition'])->name('termsCondition');
+Route::get('/faq', [IndexController::class, 'faq'])->name('faq');
 Route::get('/home/aboutus', [FrontEndAboutUsController::class, 'aboutUs'])->name('aboutus');
 Route::get('/home/team', [ExpertTeamController::class, 'team'])->name('team');
 Route::get('/home/blog', [FrontEndBlogController::class, 'blog'])->name('blog');
