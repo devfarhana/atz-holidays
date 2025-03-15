@@ -77,7 +77,7 @@
                             <button href="javascript:void(0);" class="login-button"><i class='bx bxs-user-account me-2'></i> Login</button>
                             <span class="login-devider"><i class='bx bx-dots-vertical-rounded bx-flashing' ></i></span>
                             <button href="javascript:void(0);" class="signup-button"><i class='bx bx-user-plus bx-flashing me-2' ></i> Sign Up</button>
-                            
+
                         </div>
                </div>
             </div>
@@ -346,38 +346,40 @@
 		<a class="back-to-top-icon align-items-center justify-content-center d-flex"  href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 	</div>
 
-    <!-- Jquery JS -->
-    <script src="{{ asset('frontend/assets') }}/js/jquery-3.7.1.min.js"></script>
+   <!-- Jquery JS -->
+   <script src="{{ asset('frontend/assets') }}/js/jquery-3.7.1.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('frontend/assets') }}/js/bootstrap.bundle.min.js"></script>
+   <!-- Bootstrap JS -->
+   <script src="{{ asset('frontend/assets') }}/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Wow JS -->
-    <script src="{{ asset('frontend/assets') }}/js/wow.min.js"></script>
+   <!-- Wow JS -->
+   <script src="{{ asset('frontend/assets') }}/js/wow.min.js"></script>
 
-    <!-- MeanMenu Js -->
-    <script src="{{ asset('frontend/assets') }}/js/jquery.meanmenu.min.js"></script>
+   <!-- MeanMenu Js -->
+   <script src="{{ asset('frontend/assets') }}/js/jquery.meanmenu.min.js"></script>
 
-    <!-- Swiper Js -->
-    <script src="{{ asset('frontend/assets') }}/plugins/swiper/swiper-bundle.min.js"></script>
-    <script src="{{ asset('frontend/assets') }}/plugins/owlcarousel/owl.carousel.min.js"></script>
+   <!-- Owlcarousel Js -->
+   <script src="{{ asset('frontend/assets') }}/plugins/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Fancybox JS -->
-    <script src="{{ asset('frontend/assets') }}/plugins/fancybox/jquery.fancybox.min.js"></script>
+   <!-- Sticky Sidebar JS -->
+   <script src="{{ asset('frontend/assets') }}/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+   <script src="{{ asset('frontend/assets') }}/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
 
-    <!-- Counter JS -->
-    <script src="{{ asset('frontend/assets') }}/js/jquery.counterup.min.js"></script>
-    <script src="{{ asset('frontend/assets') }}/js/jquery.waypoints.min.js"></script>
+   <!-- FancyBox JS -->
+   <script src="{{ asset('frontend/assets') }}/plugins/fancybox/jquery.fancybox.min.js"></script>
 
-    <!-- Datepicker Core JS -->
-    <script src="{{ asset('frontend/assets') }}/plugins/moment/moment.js"></script>
-    <script src="{{ asset('frontend/assets') }}/js/bootstrap-datetimepicker.min.js"></script>
+   <!-- Slick Slider -->
+   <script src="{{ asset('frontend/assets') }}/plugins/slick/slick.min.js"></script>
 
-    <!-- cursor JS -->
-    <script src="{{ asset('frontend/assets') }}/js/cursor.js"></script>
+   <!-- Datepicker Core JS -->
+   <script src="{{ asset('frontend/assets') }}/plugins/moment/moment.js"></script>
+   <script src="{{ asset('frontend/assets') }}/js/bootstrap-datetimepicker.min.js"></script>
 
-    <!-- Script JS -->
-    <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
+   <!-- cursor JS -->
+   <script src="{{ asset('frontend/assets') }}/js/cursor.js"></script>
+
+   <!-- Script JS -->
+   <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
 
 </body>
 
