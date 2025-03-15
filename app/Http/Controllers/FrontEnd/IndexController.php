@@ -119,5 +119,17 @@ class IndexController extends Controller
 
         return view('frontend.faq', compact('faqs'));
     }
+    public function privacyPolicy()
+    {
+        $privacyPolicy = privacyPolicy::where('status', true)->get();
+
+        return view('frontend.privacy-policy', compact('privacyPolicy'));
+    }
+    public function termsCondition()
+    {
+        $termsCondition = termsCondition::where('status', true)->get();
+
+        return view('frontend.terms-condition', compact('termsCondition'));
+    }
 
 }

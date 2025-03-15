@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-{{ $settings->system_name }} ||Package Details
+{{ $settings->system_name }} ||Faqs
 @endsection
 @section('content')
     <!-- Breadcrumb -->
@@ -30,22 +30,25 @@
                     <div class="faq-sec p-0">
                         <div class="row">
                             <div class="col-lg-10 mx-auto">
-                                <div class="accordion " id="accordionFaq">
-                                    @foreach($faqs as $faq)
-                                    <div class="accordion-item show  mb-3 pb-3 wow fadeInUp" data-wow-delay="0.2s">
-                                        <h2 class="accordion-header">
-											<button class="accordion-button" type="button" data-bs-toggle="collapse"
-												data-bs-target="#faq-collapseOne" aria-expanded="false"
-												aria-controls="faq-collapseOne">{{ $faq->title }}</button>
-										</h2>
-                                        <div id="faq-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">{{ $faq->details }}</p>
+                                <div class="accordion" id="accordionFaq">
+                                    @foreach($faqs as $index => $faq)
+                                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay="{{ 0.2 * ($index + 1) }}s">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#faq-collapse{{ $index }}" aria-expanded="false"
+                                                    aria-controls="faq-collapse{{ $index }}">
+                                                    {{ $faq->title }}
+                                                </button>
+                                            </h2>
+                                            <div id="faq-collapse{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                                <div class="accordion-body">
+                                                    <p>{{ $faq->details }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
+
                             </div>
                         </div>
                     </div>
