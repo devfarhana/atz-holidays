@@ -146,12 +146,12 @@
                                         Overview
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a href="javascript:void(0);" class="nav-link " data-bs-toggle="tab"
                                         data-bs-target="#Hotel">
                                         Hotel
                                     </a>
-                                </li> --}}
+                                </li>
                                 <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Activities">
@@ -176,12 +176,12 @@
                                         Exclusions
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Price">
                                         Price
                                     </a>
-                                </li> --}}
+                                </li>
                                 <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Policy">
@@ -216,21 +216,14 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="hotel-list">
+                                                @foreach($package->hotel as $hotel)
                                                 <div class="place-item mb-4">
                                                     <div class="place-img">
-                                                        <div class="img-slider image-slide owl-carousel nav-center">
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-08.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-03.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
+                                                        <div class="slide-images">
+                                                            <a href="hotel-details.html">
+                                                                <img src="{{ asset('storage/' . $hotel->image) }}"
+                                                                    class="img-fluid" alt="img">
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="place-content pb-1">
@@ -238,78 +231,24 @@
                                                             class="d-flex align-items-center justify-content-between border-bottom flex-wrap">
                                                             <div>
                                                                 <h5 class="mb-1 text-truncate"><a
-                                                                        href="hotel-details.html">Hotel Plaza
-                                                                        Athenee</a></h5>
+                                                                        href="hotel-details.html">{{ $hotel->hotel_name }}</a></h5>
                                                                 <p class="d-flex align-items-center mb-2"><i
-                                                                        class="isax isax-location5 me-2"></i>Ciutat
-                                                                    Vella, Barcelona</p>
+                                                                        class="isax isax-location5 me-2"></i>{{ $hotel->location }}</p>
                                                             </div>
                                                             <div class="d-flex align-items-center mb-2">
                                                                 <div class="d-flex align-items-center text-nowrap">
                                                                     <span
-                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">5.0</span>
-                                                                    <p class="fs-14">(400)</p>
+                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">{{ $hotel->rating }}</span>
+                                                                    <p class="fs-14">({{ $hotel->number_review }})</p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="line-ellipsis fs-14 mt-2">Experience luxury and
-                                                            comfort at our centrally located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service. Experience luxury and comfort at our centrally
-                                                            located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service.
-                                                        </p>
-                                                        <a href="#" class="btn btn-primary btn-md mb-3">Room Details</a>
+                                                        <p class="line-ellipsis fs-14 mt-2">{!! Str::limit($hotel->details, 400, '...') !!}</p>
+                                                        <a href="#" class="btn btn-primary mb-3">Room Details</a>
                                                     </div>
                                                 </div>
-                                                <div class="place-item mb-4">
-                                                    <div class="place-img">
-                                                        <div class="img-slider image-slide owl-carousel nav-center">
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-08.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-03.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="place-content pb-1">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-between border-bottom flex-wrap">
-                                                            <div>
-                                                                <h5 class="mb-1 text-truncate"><a
-                                                                        href="hotel-details.html">Hotel Plaza
-                                                                        Athenee</a></h5>
-                                                                <p class="d-flex align-items-center mb-2"><i
-                                                                        class="isax isax-location5 me-2"></i>Ciutat
-                                                                    Vella, Barcelona</p>
-                                                            </div>
-                                                            <div class="d-flex align-items-center mb-2">
-                                                                <div class="d-flex align-items-center text-nowrap">
-                                                                    <span
-                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">5.0</span>
-                                                                    <p class="fs-14">(400)</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="line-ellipsis fs-14 mt-2">Experience luxury and
-                                                            comfort at our centrally located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service. Experience luxury and comfort at our centrally
-                                                            located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service.
-                                                        </p>
-                                                        <a href="#" class="btn btn-primary btn-md mb-3">Room Details</a>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
                                     </div>
@@ -617,7 +556,7 @@
                         <div class="tour-details-box">
                             <div class="align-items-center w-50">
                                 <div class="">
-                                    <p class="form-label text-gray-9 mb-0">From</p>
+                                    <p class="form-label text-gray-9 mb-0">Price</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center w-50">
@@ -678,8 +617,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg search-btn ms-0 w-100 fs-14 mt-3">Book
-                            Now</button>
+                        <a href="{{route('bookNow',$package->slug)}}" class="btn btn-primary search-btn ms-0 w-100 fs-14 mt-3">Book Now</a>
                     </div>
                 </div>
             </div>

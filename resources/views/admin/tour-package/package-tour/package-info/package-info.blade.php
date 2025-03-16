@@ -405,6 +405,11 @@
                                                     </td>
 
                                                     <td>
+                                                        <a href="#"
+                                                            class="btn btn-sm btn-light-primary m-2" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="View Details">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
                                                         <a href="#" class="btn btn-sm btn-light-primary m-2"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#kt_modal_edit_hotel_{{ $hotel->id }}">

@@ -14784,7 +14784,7 @@ color: var(--backpack-extra);
 /*  border: 1px solid #E4EBF1;*/
 /*  border-radius: 7px;*/
 /*  height: 33px;*/
-  
+
 }
 .pricing-plan-tab .nav .tab-btn .nav-link {
 color: var(--bs-gray-600);
@@ -14797,7 +14797,7 @@ color: var(--bs-gray-600);
   border: 1px solid var(--bs-gray-300);
 }
 .pricing-plan-tab .nav .tab-btn .nav-link:hover{
-   color: var(--backpack-base); 
+   color: var(--backpack-base);
    border: 1px solid var(--bs-gray-700);
 }
 .pricing-plan-tab .nav .tab-btn .nav-link.active {
@@ -18929,7 +18929,7 @@ table.table.dataTable > thead > tr th {
   font-family: "Syne", serif;
   font-size: 20px;
   color: var(--backpack-white);
-  font-weight: 700; 
+  font-weight: 700;
 }
 .section-main-title{
     font-family: Trip Geom, BlinkMacSystemFont, -apple-system, Roboto, Helvetica, Arial, sans-serif !important;
@@ -19192,19 +19192,19 @@ color: var(--backpack-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   border-radius: 50%;
   font-size: 14px;
   color: #333;
   border: 1px solid #f8991d;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 /* Hover Effect */
 .icon-circle:hover {
-  background-color: #f8991d; 
-  color: #fff; 
-  border-color: #f8991d; 
+  background-color: #f8991d;
+  color: #fff;
+  border-color: #f8991d;
   cursor: pointer;
 }
 
@@ -19226,7 +19226,7 @@ font-size: 13px;
     background: var(--backpack-base);
 }
 .login-button i{
-    
+
 }
 .signup-button{
 font-size: 13px;
@@ -19245,7 +19245,7 @@ font-size: 13px;
 background: var(--backpack-base);
 }
 .signup-button i{
-    
+
 }
 .login-devider i{
     position: relative;
@@ -19271,8 +19271,21 @@ font-size: 14px !important;
 .plan-my-holiday-button i{
     font-size: 22px !important;
 }
+.btn.btn-primary {
+  background-color: var(--backpack-primary);
+  border: 1px solid var(--backpack-primary);
+  color: #FFF;
+}
 
 
+.slide-images{
+    height: 200px !important;
+    width: 335px !important;
+}
+.fixed-size{
+    width: 335px!important;
+    height: 200px!important;
+    object-fit: cover;
 
-
+}
 

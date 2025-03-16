@@ -381,6 +381,7 @@
    <!-- Script JS -->
    <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
 
+   @stack('script')
 </body>
 
 </html>

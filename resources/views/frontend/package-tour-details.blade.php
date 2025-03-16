@@ -114,12 +114,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="slider-wrap vertical-slider tour-vertical-slide d-flex align-items-center">
+                                    <div
+                                        class="slider-wrap vertical-slider tour-vertical-slide d-flex align-items-center">
                                         <div class="slider-for nav-center" id="large-img">
                                             @foreach($package->video as $video)
-                                                <div class="service-img">
-                                                    <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls autoplay></video>
-                                                </div>
+                                            <div class="service-img">
+                                                <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid"
+                                                    controls autoplay></video>
+                                            </div>
                                             @endforeach
                                         </div>
 
@@ -130,9 +132,10 @@
 
                                         <div class="slider-nav nav-center" id="small-img">
                                             @foreach($package->video as $video)
-                                                <div>
-                                                    <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls></video>
-                                                </div>
+                                            <div>
+                                                <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid"
+                                                    controls></video>
+                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -159,12 +162,12 @@
                                         Overview
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a href="javascript:void(0);" class="nav-link " data-bs-toggle="tab"
                                         data-bs-target="#Hotel">
                                         Hotel
                                     </a>
-                                </li> --}}
+                                </li>
                                 <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Activities">
@@ -189,12 +192,12 @@
                                         Exclusions
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Price">
                                         Price
                                     </a>
-                                </li> --}}
+                                </li>
                                 <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Policy">
@@ -229,21 +232,14 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="hotel-list">
+                                                @foreach($package->hotel as $hotel)
                                                 <div class="place-item mb-4">
                                                     <div class="place-img">
-                                                        <div class="img-slider image-slide owl-carousel nav-center">
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-08.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-03.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
+                                                        <div class="slide-images">
+                                                            <a href="hotel-details.html">
+                                                                <img src="{{ asset('storage/' . $hotel->image) }}"
+                                                                    class="img-fluid" alt="img">
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="place-content pb-1">
@@ -251,78 +247,28 @@
                                                             class="d-flex align-items-center justify-content-between border-bottom flex-wrap">
                                                             <div>
                                                                 <h5 class="mb-1 text-truncate"><a
-                                                                        href="hotel-details.html">Hotel Plaza
-                                                                        Athenee</a></h5>
+                                                                        href="hotel-details.html">{{ $hotel->hotel_name
+                                                                        }}</a></h5>
                                                                 <p class="d-flex align-items-center mb-2"><i
-                                                                        class="isax isax-location5 me-2"></i>Ciutat
-                                                                    Vella, Barcelona</p>
+                                                                        class="isax isax-location5 me-2"></i>{{
+                                                                    $hotel->location }}</p>
                                                             </div>
                                                             <div class="d-flex align-items-center mb-2">
                                                                 <div class="d-flex align-items-center text-nowrap">
                                                                     <span
-                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">5.0</span>
-                                                                    <p class="fs-14">(400)</p>
+                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">{{
+                                                                        $hotel->rating }}</span>
+                                                                    <p class="fs-14">({{ $hotel->number_review }})</p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="line-ellipsis fs-14 mt-2">Experience luxury and
-                                                            comfort at our centrally located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service. Experience luxury and comfort at our centrally
-                                                            located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service.
-                                                        </p>
-                                                        <a href="#" class="btn btn-primary btn-md mb-3">Room Details</a>
+                                                        <p class="line-ellipsis fs-14 mt-2">{!!
+                                                            Str::limit($hotel->details, 400, '...') !!}</p>
+                                                        <a href="#" class="btn btn-primary mb-3">Room Details</a>
                                                     </div>
                                                 </div>
-                                                <div class="place-item mb-4">
-                                                    <div class="place-img">
-                                                        <div class="img-slider image-slide owl-carousel nav-center">
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-08.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="slide-images">
-                                                                <a href="hotel-details.html">
-                                                                    <img src="assets/img/hotels/hotel-03.jpg"
-                                                                        class="img-fluid" alt="img">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="place-content pb-1">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-between border-bottom flex-wrap">
-                                                            <div>
-                                                                <h5 class="mb-1 text-truncate"><a
-                                                                        href="hotel-details.html">Hotel Plaza
-                                                                        Athenee</a></h5>
-                                                                <p class="d-flex align-items-center mb-2"><i
-                                                                        class="isax isax-location5 me-2"></i>Ciutat
-                                                                    Vella, Barcelona</p>
-                                                            </div>
-                                                            <div class="d-flex align-items-center mb-2">
-                                                                <div class="d-flex align-items-center text-nowrap">
-                                                                    <span
-                                                                        class="badge badge-warning badge-xs text-gray-9 fs-13 fw-medium me-2">5.0</span>
-                                                                    <p class="fs-14">(400)</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="line-ellipsis fs-14 mt-2">Experience luxury and
-                                                            comfort at our centrally located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service. Experience luxury and comfort at our centrally
-                                                            located hotel,
-                                                            featuring modern amenities, spacious rooms, and exceptional
-                                                            service.
-                                                        </p>
-                                                        <a href="#" class="btn btn-primary btn-md mb-3">Room Details</a>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
                                     </div>
@@ -446,31 +392,27 @@
                                                     <div class="d-flex align-items-center flex-wrap">
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="property"
-                                                                id="property1" checked>
-                                                            <label class="form-check-label" for="property1">
-                                                                Villa
-                                                            </label>
+                                                                id="property1" value="Villa" checked>
+                                                            <label class="form-check-label"
+                                                                for="property1">Villa</label>
                                                         </div>
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="property"
-                                                                id="property2">
-                                                            <label class="form-check-label" for="property2">
-                                                                Condo
-                                                            </label>
+                                                                id="property2" value="Condo">
+                                                            <label class="form-check-label"
+                                                                for="property2">Condo</label>
                                                         </div>
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="property"
-                                                                id="property3">
-                                                            <label class="form-check-label" for="property3">
-                                                                Cabin
-                                                            </label>
+                                                                id="property3" value="Cabin">
+                                                            <label class="form-check-label"
+                                                                for="property3">Cabin</label>
                                                         </div>
                                                         <div class="form-check mb-3">
                                                             <input class="form-check-input" type="radio" name="property"
-                                                                id="property4">
-                                                            <label class="form-check-label" for="property4">
-                                                                Apartments
-                                                            </label>
+                                                                id="property4" value="Apartments">
+                                                            <label class="form-check-label"
+                                                                for="property4">Apartments</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -481,38 +423,30 @@
                                                     <div class="d-flex align-items-center flex-wrap">
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="room"
-                                                                id="room1" checked>
-                                                            <label class="form-check-label" for="room1">
-                                                                Single
-                                                            </label>
+                                                                id="room1" value="Single" checked>
+                                                            <label class="form-check-label" for="room1">Single</label>
                                                         </div>
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="room"
-                                                                id="room2">
-                                                            <label class="form-check-label" for="room2">
-                                                                Double
-                                                            </label>
+                                                                id="room2" value="Double">
+                                                            <label class="form-check-label" for="room2">Double</label>
                                                         </div>
                                                         <div class="form-check me-3 mb-3">
                                                             <input class="form-check-input" type="radio" name="room"
-                                                                id="room3">
-                                                            <label class="form-check-label" for="room3">
-                                                                Delux
-                                                            </label>
+                                                                id="room3" value="Delux">
+                                                            <label class="form-check-label" for="room3">Delux</label>
                                                         </div>
                                                         <div class="form-check mb-3">
                                                             <input class="form-check-input" type="radio" name="room"
-                                                                id="room4">
-                                                            <label class="form-check-label" for="room4">
-                                                                Suite
-                                                            </label>
+                                                                id="room4" value="Suite">
+                                                            <label class="form-check-label" for="room4">Suite</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="banner-form">
-                                            <form class="d-lg-flex">
+                                            <form id="packageForm" class="d-lg-flex">
                                                 <div class="d-flex form-info">
                                                     <div class="form-item">
                                                         <label class="form-label text-gray-9 mb-2">Adults</label>
@@ -525,7 +459,7 @@
                                                                         <span><i class="isax isax-minus"></i></span>
                                                                     </button>
                                                                 </span>
-                                                                <input type="text" name="quantity" class=" input-number"
+                                                                <input type="text" name="adults" class=" input-number"
                                                                     value="01">
                                                                 <span class="input-group-btn float-end">
                                                                     <button type="button"
@@ -550,7 +484,7 @@
                                                                         <span><i class="isax isax-minus"></i></span>
                                                                     </button>
                                                                 </span>
-                                                                <input type="text" name="quantity" class=" input-number"
+                                                                <input type="text" name="children" class=" input-number"
                                                                     value="01">
                                                                 <span class="input-group-btn float-end">
                                                                     <button type="button"
@@ -573,7 +507,7 @@
                                                                         <span><i class="isax isax-minus"></i></span>
                                                                     </button>
                                                                 </span>
-                                                                <input type="text" name="quantity" class=" input-number"
+                                                                <input type="text" name="rooms" class=" input-number"
                                                                     value="01">
                                                                 <span class="input-group-btn float-end">
                                                                     <button type="button"
@@ -634,7 +568,7 @@
                             <div class="tour-details-box">
                                 <div class="align-items-center w-50">
                                     <div class="">
-                                        <p class="form-label text-gray-9 mb-0">From</p>
+                                        <p class="form-label text-gray-9 mb-0">Price</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center w-50">
@@ -696,8 +630,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg search-btn ms-0 w-100 fs-14 mt-3">Book
-                                Now</button>
+                            <a href="{{route('packageBook',$package->slug)}}"
+                                class="btn btn-primary search-btn ms-0 w-100 fs-14 mt-3">Book Now</a>
+
                         </div>
                     </div>
                 </div>

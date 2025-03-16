@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdvertisementController;
+use App\Http\Controllers\Admin\BannerImageController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactUsController;
@@ -45,7 +46,9 @@ Route::get('/home/blog/details/{slug}', [FrontEndBlogController::class, 'blogDet
 Route::post('/home/blog/blog-comment', [FrontEndBlogController::class, 'blogComment'])->name('blog-comment.store');
 Route::post('/submit-contact-form', [ContactController::class, 'submit'])->name('contact.submit');
 Route::get('/home/hajj-package/details/{slug}', [FrontEndPackageController::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
+Route::get('/home/hajj-package/book-now/{slug}', [FrontEndPackageController::class, 'bookNow'])->name('bookNow');
 Route::get('/home/package-tour/details/{slug}', [FrontEndPackageController::class, 'PackagetourDetails'])->name('PackagetourDetails');
+Route::get('/home/package-tour/book-now/{slug}', [FrontEndPackageController::class, 'packageBook'])->name('packageBook');
 
 
 Route::resource('/home/contact', ContactController::class);
@@ -308,6 +311,11 @@ Route::prefix('/dashboard')->controller(PrivacyPolicyController::class)->group(f
     Route::get('/privacy-policy/toggle-status/{id}', 'toggleStatus')->name('privacy-policy.toggle-status');
     Route::put('/privacy-policy/update/{id}', 'update')->name('privacy-policy.update');
     Route::delete('/privacy-policy/destroy/{id}', 'destroy')->name('privacy-policy.destroy');
+});
+Route::prefix('/dashboard')->controller(BannerImageController::class)->group(function () {
+    Route::get('/banner-image', 'index')->name('banner-image.index');
+    Route::get('/banner-image/edit/{id}', 'edit')->name('banner-image.edit');
+    Route::put('/banner-image/update/{id}', 'update')->name('banner-image.update');
 });
 
 
