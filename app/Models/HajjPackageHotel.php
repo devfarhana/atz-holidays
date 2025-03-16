@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PackageTourHotel extends Model
+class HajjPackageHotel extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'package_tour_id',
+        'hajj_packages_id',
         'hotel_name',
         'location',
         'details',
@@ -21,6 +21,6 @@ class PackageTourHotel extends Model
 
     public function package()
     {
-        return $this->belongsTo(PackageTour::class);
+        return $this->belongsTo(HajjPackage::class);
     }
 }

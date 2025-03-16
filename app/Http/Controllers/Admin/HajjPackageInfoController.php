@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HajjPackage;
 use App\Models\HajjPackageActivity;
 use App\Models\HajjPackageExclusion;
+use App\Models\HajjPackageHotel;
 use App\Models\HajjPackageInclusion;
 use App\Models\HajjPackageItinerary;
 use App\Models\HajjPackagePolicy;
@@ -392,6 +393,80 @@ class HajjPackageInfoController extends Controller
         $policy = HajjPackagePolicy::findOrFail($id);
         $policy->delete();
         return redirect()->back()->with('success', 'Policy Deleted successfully.')->with('activeTab', 'policy');
+
+    }
+    public function hotelStore(Request $request, $id)
+    {
+        $request->validate([
+            'hotel_name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'details' => 'nullable|string',
+            'rating' => 'nullable|string',
+            'number_review' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        $package = HajjPackage::findOrFail($id);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $this->handleFileUpload($request->file('image'), 'hajj-package/hotel-image');
+        }
+        HajjPackageHotel::create([
+            'hajj_packages_id' => $package->id,
+            'hotel_name' => $request->hotel_name,
+            'location' => $request->location,
+            'details' => $request->details,
+            'rating' => $request->rating,
+            'number_review' => $request->number_review,
+            'image' => $imagePath,
+        ]);
+        return redirect()->back()->with('success', 'Hotel added successfully.')->with('activeTab', 'hotel');
+    }
+
+    public function hotelUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'hotel_name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'details' => 'nullable|string',
+            'rating' => 'nullable|string',
+            'number_review' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        $hotel = HajjPackageHotel::findOrFail($id);
+
+        // Handle image upload and delete the old one
+        if ($request->hasFile('image')) {
+            $this->handleFileDelete($hotel->image); // Delete old image
+            $hotel->image = $this->handleFileUpload($request->file('image'), 'hajj-package/hotel-image'); // Upload new image
+        }
+
+        // Update hotel details
+        $hotel->update([
+            'hotel_name' => $request->hotel_name,
+            'location' => $request->location,
+            'details' => $request->details,
+            'rating' => $request->rating,
+            'number_review' => $request->number_review,
+        ]);
+        return redirect()->back()->with('success', 'Hotel Updated successfully.')->with('activeTab', 'hotel');
+
+    }
+    public function hotelToggle($id)
+    {
+        $hotel = HajjPackageHotel::findOrFail($id);
+        $hotel->status = !$hotel->status;
+        $hotel->save();
+        return redirect()->back()->with('success', 'Hotel status updated successfully.')->with('activeTab', 'hotel');
+    }
+    public function hotelDestroy($id)
+    {
+        $hotel = HajjPackageHotel::findOrFail($id);
+        $this->handleFileDelete($hotel->image);
+        $hotel->delete();
+        return redirect()->back()->with('success', 'Hotel Deleted successfully.')->with('activeTab', 'hotel');
 
     }
 }

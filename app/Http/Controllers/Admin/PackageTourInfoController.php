@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PackageTour;
 use App\Models\PackageTourActivity;
 use App\Models\PackageTourExclusion;
+use App\Models\PackageTourHotel;
 use App\Models\PackageTourInclusion;
 use App\Models\PackageTourItinerary;
 use App\Models\PackageTourPolicy;
@@ -42,9 +43,6 @@ class PackageTourInfoController extends Controller
 
         $package->save();
         return redirect()->back()->with('success', 'Overview Updated successfully.')->with('activeTab', 'overview');
-
-
-        // return redirect()->route('package-tour.info', ['id' => $package->id])->with('success', 'Overview Updated successfully.');
     }
     private function handleFileUpload($file, $path)
     {
@@ -182,8 +180,6 @@ class PackageTourInfoController extends Controller
         return redirect()->back()->with('success', 'Activity Deleted successfully.')->with('activeTab', 'activities');
 
     }
-
-
 
     public function itineraryStore(Request $request, $id)
     {
@@ -394,6 +390,81 @@ class PackageTourInfoController extends Controller
         $policy = PackageTourPolicy::findOrFail($id);
         $policy->delete();
         return redirect()->back()->with('success', 'Policy Deleted successfully.')->with('activeTab', 'policy');
+
+    }
+
+    public function hotelStore(Request $request, $id)
+    {
+        $request->validate([
+            'hotel_name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'details' => 'nullable|string',
+            'rating' => 'nullable|string',
+            'number_review' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        $package = PackageTour::findOrFail($id);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $this->handleFileUpload($request->file('image'), 'package-tour/hotel-image');
+        }
+        PackageTourHotel::create([
+            'package_tour_id' => $package->id,
+            'hotel_name' => $request->hotel_name,
+            'location' => $request->location,
+            'details' => $request->details,
+            'rating' => $request->rating,
+            'number_review' => $request->number_review,
+            'image' => $imagePath,
+        ]);
+        return redirect()->back()->with('success', 'Hotel added successfully.')->with('activeTab', 'hotel');
+    }
+
+    public function hotelUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'hotel_name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'details' => 'nullable|string',
+            'rating' => 'nullable|string',
+            'number_review' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        $hotel = PackageTourHotel::findOrFail($id);
+
+        // Handle image upload and delete the old one
+        if ($request->hasFile('image')) {
+            $this->handleFileDelete($hotel->image); // Delete old image
+            $hotel->image = $this->handleFileUpload($request->file('image'), 'package-tour/hotel-image'); // Upload new image
+        }
+
+        // Update hotel details
+        $hotel->update([
+            'hotel_name' => $request->hotel_name,
+            'location' => $request->location,
+            'details' => $request->details,
+            'rating' => $request->rating,
+            'number_review' => $request->number_review,
+        ]);
+        return redirect()->back()->with('success', 'Hotel Updated successfully.')->with('activeTab', 'hotel');
+
+    }
+    public function hotelToggle($id)
+    {
+        $hotel = PackageTourHotel::findOrFail($id);
+        $hotel->status = !$hotel->status;
+        $hotel->save();
+        return redirect()->back()->with('success', 'Hotel status updated successfully.')->with('activeTab', 'hotel');
+    }
+    public function hotelDestroy($id)
+    {
+        $hotel = PackageTourHotel::findOrFail($id);
+        $this->handleFileDelete($hotel->image);
+        $hotel->delete();
+        return redirect()->back()->with('success', 'Hotel Deleted successfully.')->with('activeTab', 'hotel');
 
     }
 }

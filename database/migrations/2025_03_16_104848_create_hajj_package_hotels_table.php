@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package_tour_hotels', function (Blueprint $table) {
+        Schema::create('hajj_package_hotels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_tour_id')->constrained('package_tours')->onDelete('cascade');
+            $table->foreignId('hajj_packages_id')->constrained('hajj_packages')->onDelete('cascade');
             $table->string('hotel_name')->nullable();
             $table->string('location')->nullable();
             $table->text('details')->nullable();
-            $table->string('image')->nullable();
             $table->string('rating')->nullable();
             $table->string('number_review')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('package_tour_hotels');
+        Schema::dropIfExists('hajj_package_hotels');
     }
 };

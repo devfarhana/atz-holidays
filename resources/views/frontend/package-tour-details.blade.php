@@ -105,41 +105,38 @@
                                 <div class="service-wrap mb-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <div class="mb-2">
-                                            <h4 class="mb-1 d-flex align-items-center flex-wrap mb-2">Mystical Nepal -
-                                                Kathmandu, Pokhara & Ghandruk Adventure</h4>
+                                            <h4 class="mb-1 d-flex align-items-center flex-wrap mb-2">
+                                                {{$package->package_name}}</h4>
                                             <div class="d-flex align-items-center flex-wrap">
                                                 <p class="fs-14 mb-2 me-3 pe-3 border-end"><i
-                                                        class="isax isax-receipt text-primary me-2"></i>Adventure Tour
-                                                </p>
+                                                        class="isax isax-receipt text-primary me-2"></i>{{
+                                                    $package->holiday_theme }}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div
-                                        class="slider-wrap vertical-slider tour-vertical-slide d-flex align-items-center">
+                                    <div class="slider-wrap vertical-slider tour-vertical-slide d-flex align-items-center">
                                         <div class="slider-for nav-center" id="large-img">
-
                                             @foreach($package->video as $video)
-                                            <div class="service-img">
-                                                <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid"
-                                                    controls autoplay></video>
-                                            </div>
+                                                <div class="service-img">
+                                                    <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls autoplay></video>
+                                                </div>
                                             @endforeach
-
                                         </div>
+
                                         <a href="assets/img/tours/tour-large-01.jpg" data-fancybox="gallery"
-                                            class="btn btn-white btn-xs view-btn"><i
-                                                class="isax isax-image me-1"></i>See All</a>
+                                            class="btn btn-white btn-xs view-btn">
+                                            <i class="isax isax-image me-1"></i>See All
+                                        </a>
+
                                         <div class="slider-nav nav-center" id="small-img">
                                             @foreach($package->video as $video)
-                                            {{-- <div><img src="assets/img/p-1.jpg" class="img-fluid" alt="Slider Img">
-                                            </div> --}}
+                                                <div>
+                                                    <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls></video>
+                                                </div>
                                             @endforeach
-                                            <div>
-                                                <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid"
-                                                    controls autoplay></video>
-                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="map">
@@ -373,7 +370,9 @@
                                                     <div>
                                                         <ul class="add-tab-list">
                                                             @foreach($package->itinerary as $key => $itinerary)
-                                                                <li><a href="#basic_info" class="{{ $key == 0 ? 'active' : '' }}">{{ $itinerary->itinerary_days }}</a></li>
+                                                            <li><a href="#basic_info"
+                                                                    class="{{ $key == 0 ? 'active' : '' }}">{{
+                                                                    $itinerary->itinerary_days }}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     </div>

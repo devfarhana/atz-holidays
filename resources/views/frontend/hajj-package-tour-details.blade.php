@@ -102,25 +102,28 @@
                                </div>
                             </div>
                             <div class="slider-wrap vertical-slider tour-vertical-slide d-flex align-items-center">
-                               <div class="slider-for nav-center" id="large-img">
-
-                                @foreach($package->video as $video)
-                                <div class="service-img">
-                                  <video src="{{ asset('storage/' . $video->video) }}"  class="img-fluid"  controls autoplay></video>
+                                <div class="slider-for nav-center" id="large-img">
+                                    @foreach($package->video as $video)
+                                        <div class="service-img">
+                                            <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls autoplay></video>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
 
-                               </div>
-                               <a href="assets/img/tours/tour-large-01.jpg" data-fancybox="gallery" class="btn btn-white btn-xs view-btn"><i class="isax isax-image me-1"></i>See All</a>
-                               <div class="slider-nav nav-center" id="small-img">
-                                @foreach($package->video as $video)
-                                  {{-- <div><img src="assets/img/p-1.jpg" class="img-fluid" alt="Slider Img"></div> --}}
-                                  @endforeach
-                                  <div>
-                                    <video src="{{ asset('storage/' . $video->video) }}"  class="img-fluid"  controls autoplay></video>
+                                <a href="assets/img/tours/tour-large-01.jpg" data-fancybox="gallery"
+                                    class="btn btn-white btn-xs view-btn">
+                                    <i class="isax isax-image me-1"></i>See All
+                                </a>
+
+                                <div class="slider-nav nav-center" id="small-img">
+                                    @foreach($package->video as $video)
+                                        <div>
+                                            <video src="{{ asset('storage/' . $video->video) }}" class="img-fluid" controls></video>
+                                        </div>
+                                    @endforeach
                                 </div>
-                               </div>
                             </div>
+
                          </div>
                       </div>
                       <div class="tab-pane fade" id="map">

@@ -9,7 +9,6 @@ class HajjPackageActivity extends Model
 {
     use HasFactory;
     protected $fillable = [
-
         'hajj_packages_id',
         'title',
         'location',

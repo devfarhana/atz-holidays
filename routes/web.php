@@ -153,13 +153,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/hajj-package/update/{id}', 'update')->name('hajj-package.update');
         Route::put('/hajj-package/feature/{id}', 'featureUpdate')->name('hajj-feature.update');
         Route::delete('/hajj-package/destroy/{id}', 'destroy')->name('hajj-package.destroy');
-
         Route::post('/hajj-package/images', 'hajimagesStore')->name('hajjimages.store');
         Route::post('/hajj-package/images/{id}','imagesDestroy')->name('images.destroy');
-
-        Route::post('/hajj-package/{id}/video', 'videoStore')->name('video.store');
-        Route::put('/hajj-video/{id}','videoUpdate')->name('video.update');
-        Route::delete('/hajj-video/{id}', 'videoDestroy')->name('video.destroy');
     });
     Route::prefix('/dashboard')->controller(PackageTourController::class)->group(function () {
         Route::get('/package-tour', 'index')->name('package-tour.index');
@@ -171,11 +166,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/package-tour/update/{id}', 'update')->name('package-tour.update');
         Route::post('/package-tour', 'imagesStore')->name('images.store');
         Route::post('/package-tour/images/{id}','imagesDestroy')->name('images.destroy');
-
         Route::put('/package-tour/feature/{id}', 'featureUpdate')->name('package-feature.update');
         Route::delete('/package-tour/destroy/{id}', 'destroy')->name('package-tour.destroy');
         Route::post('/package-tour/{id}/package-images', 'imagesStore')->name('package-tour-images.store');
-
 
     });
 
@@ -213,6 +206,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/policy/{id}','policyUpdate')->name('hajj-policy.update');
         Route::delete('/policy/{id}', 'policyDestroy')->name('hajj-policy.destroy');
         Route::get('/policy/toggle-status/{id}', 'policyToggle')->name('hajj-policy.toggle');
+        //hotel
+        Route::post('/hotel/{id}/hotel', 'hotelStore')->name('hotel.store');
+        Route::put('/hotel/{id}','hotelUpdate')->name('hotel.update');
+        Route::delete('/hotel/{id}', 'hotelDestroy')->name('hotel.destroy');
+        Route::get('/hotel/toggle-status/{id}', 'hotelToggle')->name('hotel.toggle');
 
 
     });
@@ -250,6 +248,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/policy/{id}','policyUpdate')->name('policy.update');
         Route::delete('/policy/{id}', 'policyDestroy')->name('policy.destroy');
         Route::get('/policy/toggle-status/{id}', 'policyToggle')->name('policy.toggle');
+         //hotel
+         Route::post('/hotel/{id}/hotel', 'hotelStore')->name('packagehotel.store');
+         Route::put('/hotel/{id}','hotelUpdate')->name('packagehotel.update');
+         Route::delete('/hotel/{id}', 'hotelDestroy')->name('packagehotel.destroy');
+         Route::get('/hotel/toggle-status/{id}', 'hotelToggle')->name('packagehotel.toggle');
+
     });
 
 
