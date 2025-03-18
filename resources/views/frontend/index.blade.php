@@ -299,7 +299,6 @@
     </div>
 </section>
 @endif
-
 <!--Tour Packages-->
 <!-- About Section -->
 @if($aboutus)

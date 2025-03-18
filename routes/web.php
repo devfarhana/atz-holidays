@@ -31,7 +31,7 @@ use App\Http\Controllers\Admin\WhyBookController;
 use App\Http\Controllers\FrontEnd\AboutUsController as FrontEndAboutUsController;
 use App\Http\Controllers\FrontEnd\BlogController as FrontEndBlogController;
 use App\Http\Controllers\FrontEnd\ExpertTeamController;
-use App\Http\Controllers\FrontEnd\PackageController as FrontEndPackageController;
+use App\Http\Controllers\FrontEnd\PackageController;
 
 // Route::view('/', 'frontend.index');
 
@@ -45,10 +45,14 @@ Route::get('/home/blog', [FrontEndBlogController::class, 'blog'])->name('blog');
 Route::get('/home/blog/details/{slug}', [FrontEndBlogController::class, 'blogDetails'])->name('blog.details');
 Route::post('/home/blog/blog-comment', [FrontEndBlogController::class, 'blogComment'])->name('blog-comment.store');
 Route::post('/submit-contact-form', [ContactController::class, 'submit'])->name('contact.submit');
-Route::get('/home/hajj-package/details/{slug}', [FrontEndPackageController::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
-Route::get('/home/hajj-package/book-now/{slug}', [FrontEndPackageController::class, 'bookNow'])->name('bookNow');
-Route::get('/home/package-tour/details/{slug}', [FrontEndPackageController::class, 'PackagetourDetails'])->name('PackagetourDetails');
-Route::get('/home/package-tour/book-now/{slug}', [FrontEndPackageController::class, 'packageBook'])->name('packageBook');
+Route::get('/home/hajj-packages', [Packagecontroller::class, 'hajjPackage'])->name('hajjPackage');
+Route::get('/home/hajj-package/details/{slug}', [Packagecontroller::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
+Route::get('/home/hajj-package/book-now/{slug}', [Packagecontroller::class, 'bookNow'])->name('bookNow');
+Route::post('/home/hajj-package/book-now/{slug}/order', [Packagecontroller::class, 'order'])->name('order.submit');
+
+Route::get('/home/package-tours', [Packagecontroller::class, 'packageTour'])->name('packageTour');
+Route::get('/home/package-tour/details/{slug}', [Packagecontroller::class, 'PackagetourDetails'])->name('PackagetourDetails');
+Route::get('/home/package-tour/book-now/{slug}', [Packagecontroller::class, 'packageBook'])->name('packageBook');
 
 
 Route::resource('/home/contact', ContactController::class);

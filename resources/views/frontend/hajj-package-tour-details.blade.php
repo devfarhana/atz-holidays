@@ -177,12 +177,12 @@
                                         Exclusions
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Price">
                                         Price
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#Policy">

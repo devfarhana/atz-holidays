@@ -36,12 +36,12 @@
                    <li>
                       <div class="megamenu-wrapper">
                          <ul>
-                            <li><a href="car-grid.html">Custom Tour Package</a></li>
-                            <li><a href="car-list.html">Corporate Tour</a></li>
-                            <li><a href="car-map.html">Package Tour</a></li>
+                            <li><a href="{{route('packageTour')}}">Package Tour</a></li>
+                            <li><a href="{{route('hajjPackage')}}">Hajj & Umrah Package</a></li>
+                            {{-- <li><a href="car-map.html">Package Tour</a></li>
                             <li><a href="car-details.html">Domestic Tour</a></li>
                             <li><a href="car-booking.html">International Tour</a></li>
-                            <li><a href="add-car.html">Budget Tour</a></li>
+                            <li><a href="add-car.html">Budget Tour</a></li> --}}
                          </ul>
                       </div>
                    </li>
