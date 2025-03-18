@@ -333,12 +333,12 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ Route::currentRouteName() === 'terms-condition.index' ? 'active' : '' }}"
-                            href="{{ route('terms-condition.index') }}">
+                        <a class="menu-link {{ Route::currentRouteName() === 'banner-image.edit' ? 'active' : '' }}"
+                            href="{{ route('banner-image.edit') }}">
                             <span class="menu-icon">
-                                <i class="fas fa-file-contract"></i>
+                                <i class="fa-file-image-o"></i>
                             </span>
-                            <span class="menu-title">Terms & Condition</span>
+                            <span class="menu-title">Banner Image</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

@@ -32,16 +32,6 @@
                             <input type="text" class="form-control" name="title"
                                 value="{{ old('title', $teamPage->title) }}" placeholder="Enter Title" />
                         </div>
-                        <div class="mb-7 col-12 image">
-                            <label class="form-label">Banner Image</label>
-                            <input type="file" class="form-control mb-3 edit_image" name="banner_img" accept="image/*">
-                            @if($teamPage->banner_img)
-                            <img class="edit_image_preview mt-2" id="edit_image_preview" src="{{ asset('storage/' . $teamPage->banner_img) }}" alt="Old Image" width="96" height="72">
-                            @else
-                            <img class="edit_image_preview d-none mt-2" src="" alt="Preview Image" width="96" height="72">
-                            @endif
-                        </div>
-
                         <!-- Submit Button -->
                         <div>
                             <button type="submit" class="btn btn-success">Update</button>

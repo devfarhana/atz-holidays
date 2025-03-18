@@ -4,7 +4,8 @@
 @endsection
 @section('content')
     <!-- Breadcrumb -->
-    <div class="breadcrumb-bar breadcrumb-bg-01 text-center">
+    <div class="breadcrumb-bar text-center"
+    style="background: url('{{ asset('storage/' .$banner->blog_banner) }}') no-repeat; background-size: cover; width:100%" >
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-12">

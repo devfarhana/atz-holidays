@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','About Us')
+@section('title','Banner Images')
 @section('content')
 <!--begin::Toolbar-->
 <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
@@ -15,7 +15,7 @@
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                 <!--begin::Item-->
                 <li class="breadcrumb-item text-muted">
-                    <a href="index.html" class="text-muted text-hover-primary">About Us</a>
+                    <a href="index.html" class="text-muted text-hover-primary">Banner Images</a>
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
@@ -24,7 +24,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Manage About Us</li>
+                <li class="breadcrumb-item text-muted">Manage Banner Image</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -42,7 +42,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="card-title">
-                    <h3>About Us Table</h3>
+                    <h3>Banner Image Table</h3>
                 </div>
             </div>
             <div class="card-body">
@@ -67,9 +67,6 @@
                                     <td>{{ $about->title }}</td>
                                     <td>{{ $about->sub_title }}</td>
                                     <td class="w-25">{!! $about->description !!}</td>
-
-
-                                     <!-- image 1 -->
                                     <td class="">
                                         @if($about->about_img_1)
                                             <img class="m-3" src="{{ asset('storage/' . $about->about_img_1) }}" width="96px" height="72px" alt="image">

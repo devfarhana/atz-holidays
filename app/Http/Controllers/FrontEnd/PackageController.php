@@ -11,11 +11,13 @@ use App\Models\PackageTour;
 use App\Models\PackageTourImages;
 use App\Models\WhyBook;
 use Illuminate\Http\Request;
+use App\Models\BannerImage;
 
 class PackageController extends Controller
 {
     public function HajjpackageDetails( $slug)
     {
+        $banner = BannerImage::first();
         $package = HajjPackage::with('features','video','activity','itinerary','inclusion','exclusion','policy','hotel')->where('slug', $slug)->first();
         $hajjpackageimages = HajjPackageImages::all();
         $whyBooks = WhyBook::where('status', 1)->get();
@@ -24,6 +26,7 @@ class PackageController extends Controller
     }
     public function bookNow($slug)
     {
+        $banner = BannerImage::first();
         $package = HajjPackage::with('features','video','activity','itinerary','inclusion','exclusion','policy','hotel')->where('slug', $slug)->first();
         $hajjpackageimages = HajjPackageImages::all();
         $destinationcountries = Country::with('destination')->whereHas('destination')->where('status', 1)->get();
@@ -31,7 +34,7 @@ class PackageController extends Controller
     }
     public function PackagetourDetails($slug)
     {
-
+        $banner = BannerImage::first();
         $package = PackageTour::with('features','video','activity','itinerary','inclusion','exclusion','policy','hotel')->where('slug', $slug)->first();
         $packagetourimages = PackageTourImages::all();
         $whyBooks = WhyBook::where('status', 1)->get();
@@ -40,6 +43,7 @@ class PackageController extends Controller
     }
     public function packageBook($slug)
     {
+        $banner = BannerImage::first();
         $package = PackageTour::with('features','video','activity','itinerary','inclusion','exclusion','policy','hotel')->where('slug', $slug)->first();
         $packagetourimages = PackageTourImages::all();
         $destinationcountries = Country::with('destination')->whereHas('destination')->where('status', 1)->get();

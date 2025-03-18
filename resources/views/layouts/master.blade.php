@@ -245,11 +245,11 @@
                                             <a href="{{route('aboutus')}}">About Us</a>
                                         </li>
                                         <li>
-                                            <a href="#">News & Blog</a>
+                                            <a href="{{route('blog')}}">News & Blog</a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="#">Custom Tour Package</a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="{{route('privacyPolicy')}}">Privacy Policy</a>
                                         </li>

@@ -59,7 +59,6 @@ class AboutUsController extends Controller
             'description' => 'nullable|string',
             'year_of_experience' => 'nullable|string',
             'experience_txt' => 'nullable|string',
-            'breadcrumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_img_1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_img_2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_img_3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -70,13 +69,9 @@ class AboutUsController extends Controller
         $about->sub_title = $request->sub_title;
         $about->experience_txt = $request->experience_txt;
         $about->year_of_experience = $request->year_of_experience;
-        $about->description = $cleanDescription;
-        //$about->description = $request->description;
+        $about->description = $request->description;
         // Handle Image 1 Upload
-        if ($request->hasFile('breadcrumb_image')) {
-            $this->handleFileDelete($about->breadcrumb_image);
-            $about->breadcrumb_image = $this->handleFileUpload($request->file('breadcrumb_image'), 'about/breadcrumb-image');
-        }
+      
         if ($request->hasFile('about_img_1')) {
             $this->handleFileDelete($about->about_img_1);
             $about->about_img_1 = $this->handleFileUpload($request->file('about_img_1'), 'about/about-image');

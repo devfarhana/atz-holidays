@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('banner_images', function (Blueprint $table) {
             $table->id();
+            $table->string('about_banner')->nullable();
+            $table->string('team_banner')->nullable();
+            $table->string('hajj_banner')->nullable();
+            $table->string('package_banner')->nullable();
+            $table->string('blog_banner')->nullable();
+            $table->string('contact_banner')->nullable();
+            $table->string('faq_banner')->nullable();
+            $table->string('privacy_banner')->nullable();
+            $table->string('terms_banner')->nullable();
             $table->timestamps();
         });
     }

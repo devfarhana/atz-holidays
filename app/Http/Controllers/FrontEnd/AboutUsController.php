@@ -6,6 +6,7 @@ use App\Models\AboutUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Aboutkeypoint;
+use App\Models\BannerImage;
 use App\Models\MissionVision;
 use App\Models\Team;
 use App\Models\TeamPage;
@@ -15,6 +16,7 @@ class AboutUsController extends Controller
 {
     public function aboutUs()
     {
+        $banner = BannerImage::first();
         $aboutus = AboutUs::first();
         $aboutKeypoints = Aboutkeypoint::where('status', true)
         ->orderBy('created_at', 'desc')
@@ -27,6 +29,6 @@ class AboutUsController extends Controller
         ->limit(4)
         ->get();
         $teamPage = TeamPage::first();
-        return view('frontend.about',compact('aboutus','aboutKeypoints','teamPage','teams','testimonials'));
+        return view('frontend.about',compact('aboutus','aboutKeypoints','teamPage','teams','testimonials','banner'));
     }
 }

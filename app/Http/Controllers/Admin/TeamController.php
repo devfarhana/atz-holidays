@@ -35,20 +35,9 @@ class TeamController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'banner_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
-
         $teamPage = TeamPage::first();
         $teamPage->title = $request->title;
-        if($request->hasFile('banner_img')) {
-
-            if ($teamPage->banner_img && Storage::disk('public')->exists($teamPage->banner_img)) {
-                Storage::disk('public')->delete($teamPage->banner_img);
-            }
-            $teamPage->banner_img = $request->file('banner_img')->store('team','public');
-
-        }
-
         $teamPage->save();
 
         return redirect()->route('teams.index')->with('success', 'Team Page Updated successfully.');

@@ -313,8 +313,7 @@ Route::prefix('/dashboard')->controller(PrivacyPolicyController::class)->group(f
     Route::delete('/privacy-policy/destroy/{id}', 'destroy')->name('privacy-policy.destroy');
 });
 Route::prefix('/dashboard')->controller(BannerImageController::class)->group(function () {
-    Route::get('/banner-image', 'index')->name('banner-image.index');
-    Route::get('/banner-image/edit/{id}', 'edit')->name('banner-image.edit');
+    Route::get('/banner-image', 'edit')->name('banner-image.edit');
     Route::put('/banner-image/update/{id}', 'update')->name('banner-image.update');
 });
 
