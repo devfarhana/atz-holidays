@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\BannerImage;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogMessage;
@@ -12,18 +13,21 @@ class BlogController extends Controller
 {
     public function blog()
     {
-        $allBlog = Blog::with('blogCategory')
+        $banner = BannerImage::first();
+        $blogs = Blog::with('blogCategory')
         ->where('status', true)
         ->get();
 
         return view('frontend.blog', [
 
-            'allBlog' => $allBlog,
+            'blogs' => $blogs,
+            'banner' => $banner,
         ]);
     }
     public function blogDetails($slug)
     {
 
+        $banner = BannerImage::first();
         $allBlog = Blog::with('blogCategory')->where('status', true)->get();
         $categories = BlogCategory::withCount(['blogs' => function ($query) {
             $query->where('status', true); // Count only active blogs
@@ -48,6 +52,7 @@ class BlogController extends Controller
             'otherBlogs' => $otherBlogs,
             'categories' => $categories,
             'comments' => $comments,
+            'banner' => $banner,
 
         ]);
     }

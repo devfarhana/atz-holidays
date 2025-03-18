@@ -74,14 +74,6 @@
                                         @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-6 mb-7 image">
-                                        <label for="breadcrumb_image" class="form-label">Banner Image</label>
-                                        <input type="file" class="form-control mb-4" id="breadcrumb_image" name="breadcrumb_image">
-                                        @error('breadcrumb_image') <span class="text-danger">{{ $message }}</span> @enderror <br>
-                                        @if($about->breadcrumb_image)
-                                            <img id="breadcrumb_image_preview" src="{{ asset('storage/' . $about->breadcrumb_image) }}" width="96px" height="72px" alt="image">
-                                        @endif
-                                    </div>
-                                    <div class="col-md-6 mb-7 image">
                                         <label for="about_img_1" class="form-label">About Image 01</label>
                                         <input type="file" class="form-control mb-4" id="about_img_1" name="about_img_1">
                                         @error('about_img_1') <span class="text-danger">{{ $message }}</span> @enderror <br>

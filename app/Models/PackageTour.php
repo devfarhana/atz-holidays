@@ -62,4 +62,8 @@ class PackageTour extends Model
     {
         return $this->hasMany(PackageTourPolicy::class, 'package_tour_id', 'id');
     }
+    public function hotel()
+    {
+        return $this->hasMany(PackageTourHotel::class, 'package_tour_id', 'id');
+    }
 }

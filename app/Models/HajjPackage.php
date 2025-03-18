@@ -62,4 +62,8 @@ class HajjPackage extends Model
     {
         return $this->hasMany(HajjPackagePolicy::class, 'hajj_packages_id', 'id');
     }
+    public function hotel()
+    {
+        return $this->hasMany(HajjPackageHotel::class, 'hajj_packages_id', 'id');
+    }
 }

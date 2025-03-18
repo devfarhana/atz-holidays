@@ -55,7 +55,6 @@
                                     <th>Title</th>
                                     <th>Sub Title</th>
                                     <th>Description</th>
-                                    <th>Banner Image</th>
                                     <th>About Image</th>
                                     <th>Years Of Experience</th>
                                     <th>Action</th>
@@ -69,11 +68,7 @@
                                     <td>{{ $about->sub_title }}</td>
                                     <td class="w-25">{!! $about->description !!}</td>
 
-                                    <td>
-                                        @if($about->breadcrumb_image)
-                                            <img src="{{ asset('storage/' . $about->breadcrumb_image) }}" width="96px" height="72px" alt="image">
-                                        @endif
-                                    </td>
+
                                      <!-- image 1 -->
                                     <td class="">
                                         @if($about->about_img_1)

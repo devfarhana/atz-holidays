@@ -8,6 +8,7 @@ use App\Models\AboutUs;
 use App\Http\Controllers\Controller;
 use App\Models\Aboutkeypoint;
 use App\Models\Advertisement;
+use App\Models\BannerImage;
 use App\Models\Blog;
 use App\Models\Client;
 use App\Models\ClientTitle;
@@ -115,21 +116,24 @@ class IndexController extends Controller
     }
     public function faq()
     {
+        $banner = BannerImage::first();
         $faqs = Faq::where('status', true)->get();
 
-        return view('frontend.faq', compact('faqs'));
+        return view('frontend.faq', compact('faqs','banner'));
     }
     public function privacyPolicy()
     {
+        $banner = BannerImage::first();
         $privacyPolicy = privacyPolicy::where('status', true)->get();
 
-        return view('frontend.privacy-policy', compact('privacyPolicy'));
+        return view('frontend.privacy-policy', compact('privacyPolicy','banner'));
     }
     public function termsCondition()
     {
+        $banner = BannerImage::first();
         $termsCondition = termsCondition::where('status', true)->get();
 
-        return view('frontend.terms-condition', compact('termsCondition'));
+        return view('frontend.terms-condition', compact('termsCondition','banner'));
     }
 
 }

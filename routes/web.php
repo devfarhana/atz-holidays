@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdvertisementController;
+use App\Http\Controllers\Admin\BannerImageController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactUsController;
@@ -30,7 +31,7 @@ use App\Http\Controllers\Admin\WhyBookController;
 use App\Http\Controllers\FrontEnd\AboutUsController as FrontEndAboutUsController;
 use App\Http\Controllers\FrontEnd\BlogController as FrontEndBlogController;
 use App\Http\Controllers\FrontEnd\ExpertTeamController;
-use App\Http\Controllers\FrontEnd\PackageController as FrontEndPackageController;
+use App\Http\Controllers\FrontEnd\PackageController;
 
 // Route::view('/', 'frontend.index');
 
@@ -44,8 +45,14 @@ Route::get('/home/blog', [FrontEndBlogController::class, 'blog'])->name('blog');
 Route::get('/home/blog/details/{slug}', [FrontEndBlogController::class, 'blogDetails'])->name('blog.details');
 Route::post('/home/blog/blog-comment', [FrontEndBlogController::class, 'blogComment'])->name('blog-comment.store');
 Route::post('/submit-contact-form', [ContactController::class, 'submit'])->name('contact.submit');
-Route::get('/home/hajj-package/details/{slug}', [FrontEndPackageController::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
-Route::get('/home/package-tour/details/{slug}', [FrontEndPackageController::class, 'PackagetourDetails'])->name('PackagetourDetails');
+Route::get('/home/hajj-packages', [Packagecontroller::class, 'hajjPackage'])->name('hajjPackage');
+Route::get('/home/hajj-package/details/{slug}', [Packagecontroller::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
+Route::get('/home/hajj-package/book-now/{slug}', [Packagecontroller::class, 'bookNow'])->name('bookNow');
+Route::post('/home/hajj-package/book-now/{slug}/order', [Packagecontroller::class, 'order'])->name('order.submit');
+
+Route::get('/home/package-tours', [Packagecontroller::class, 'packageTour'])->name('packageTour');
+Route::get('/home/package-tour/details/{slug}', [Packagecontroller::class, 'PackagetourDetails'])->name('PackagetourDetails');
+Route::get('/home/package-tour/book-now/{slug}', [Packagecontroller::class, 'packageBook'])->name('packageBook');
 
 
 Route::resource('/home/contact', ContactController::class);
@@ -153,13 +160,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/hajj-package/update/{id}', 'update')->name('hajj-package.update');
         Route::put('/hajj-package/feature/{id}', 'featureUpdate')->name('hajj-feature.update');
         Route::delete('/hajj-package/destroy/{id}', 'destroy')->name('hajj-package.destroy');
-
         Route::post('/hajj-package/images', 'hajimagesStore')->name('hajjimages.store');
         Route::post('/hajj-package/images/{id}','imagesDestroy')->name('images.destroy');
-
-        Route::post('/hajj-package/{id}/video', 'videoStore')->name('video.store');
-        Route::put('/hajj-video/{id}','videoUpdate')->name('video.update');
-        Route::delete('/hajj-video/{id}', 'videoDestroy')->name('video.destroy');
     });
     Route::prefix('/dashboard')->controller(PackageTourController::class)->group(function () {
         Route::get('/package-tour', 'index')->name('package-tour.index');
@@ -171,11 +173,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/package-tour/update/{id}', 'update')->name('package-tour.update');
         Route::post('/package-tour', 'imagesStore')->name('images.store');
         Route::post('/package-tour/images/{id}','imagesDestroy')->name('images.destroy');
-
         Route::put('/package-tour/feature/{id}', 'featureUpdate')->name('package-feature.update');
         Route::delete('/package-tour/destroy/{id}', 'destroy')->name('package-tour.destroy');
         Route::post('/package-tour/{id}/package-images', 'imagesStore')->name('package-tour-images.store');
-
 
     });
 
@@ -213,6 +213,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/policy/{id}','policyUpdate')->name('hajj-policy.update');
         Route::delete('/policy/{id}', 'policyDestroy')->name('hajj-policy.destroy');
         Route::get('/policy/toggle-status/{id}', 'policyToggle')->name('hajj-policy.toggle');
+        //hotel
+        Route::post('/hotel/{id}/hotel', 'hotelStore')->name('hotel.store');
+        Route::put('/hotel/{id}','hotelUpdate')->name('hotel.update');
+        Route::delete('/hotel/{id}', 'hotelDestroy')->name('hotel.destroy');
+        Route::get('/hotel/toggle-status/{id}', 'hotelToggle')->name('hotel.toggle');
 
 
     });
@@ -250,6 +255,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/policy/{id}','policyUpdate')->name('policy.update');
         Route::delete('/policy/{id}', 'policyDestroy')->name('policy.destroy');
         Route::get('/policy/toggle-status/{id}', 'policyToggle')->name('policy.toggle');
+         //hotel
+         Route::post('/hotel/{id}/hotel', 'hotelStore')->name('packagehotel.store');
+         Route::put('/hotel/{id}','hotelUpdate')->name('packagehotel.update');
+         Route::delete('/hotel/{id}', 'hotelDestroy')->name('packagehotel.destroy');
+         Route::get('/hotel/toggle-status/{id}', 'hotelToggle')->name('packagehotel.toggle');
+
     });
 
 
@@ -304,6 +315,10 @@ Route::prefix('/dashboard')->controller(PrivacyPolicyController::class)->group(f
     Route::get('/privacy-policy/toggle-status/{id}', 'toggleStatus')->name('privacy-policy.toggle-status');
     Route::put('/privacy-policy/update/{id}', 'update')->name('privacy-policy.update');
     Route::delete('/privacy-policy/destroy/{id}', 'destroy')->name('privacy-policy.destroy');
+});
+Route::prefix('/dashboard')->controller(BannerImageController::class)->group(function () {
+    Route::get('/banner-image', 'edit')->name('banner-image.edit');
+    Route::put('/banner-image/update/{id}', 'update')->name('banner-image.update');
 });
 
 

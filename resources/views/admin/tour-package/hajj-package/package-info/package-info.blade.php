@@ -87,11 +87,10 @@
                             <a class="nav-link {{ session('activeTab') == 'activities' ? 'active' : '' }} "
                                 id="activities-tab-nobd" data-bs-toggle="pill" href="#activities-nobd" role="tab"
                                 aria-controls="activities-nobd" aria-selected="false" tabindex="-1">Activities</a>
-                            {{--
 
                             <a class="nav-link {{ session('activeTab') == 'hotel' ? 'active' : '' }} "
                                 id="hotel-tab-nobd" data-bs-toggle="pill" href="#hotel-nobd" role="tab"
-                                aria-controls="hotel-nobd" aria-selected="false" tabindex="-1">Hotel</a> --}}
+                                aria-controls="hotel-nobd" aria-selected="false" tabindex="-1">Hotel</a>
 
                             <a class="nav-link {{ session('activeTab') == 'itinerary' ? 'active' : '' }} "
                                 id="itinerary-tab-nobd" data-bs-toggle="pill" href="#itinerary-nobd" role="tab"
@@ -205,7 +204,7 @@
                                                 <tr class="fw-semibold fs-6 text-muted">
                                                     <th>Sl</th>
                                                     <th>Video</th>
-                                                    <th></th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -313,7 +312,7 @@
                                                         <a href="{{ route('hajj-activity.toggle', $activity->id) }}"
                                                             class="badge badge-success">Active</a>
                                                         @else
-                                                        <a href="{{ route('hajj-.toggle', $activity->id) }}"
+                                                        <a href="{{ route('hajj-activity.toggle', $activity->id) }}"
                                                             class="badge badge-danger">Inactive</a>
                                                         @endif
                                                     </td>
@@ -350,84 +349,95 @@
                         </div>
                     </div>
                     <div class="tab-pane fade {{ session('activeTab') == 'hotel' ? 'show active' : '' }}"
-                        id="hotel-nobd" role="tabpanel" aria-labelledby="hotel-tab-nobd">
+                    id="hotel-nobd" role="tabpanel" aria-labelledby="hotel-tab-nobd">
 
+                        @include('admin.tour-package.hajj-package.package-info.hotel.create-modal')
                         <div class="card">
-                            <div class="card-header project-details-card-header">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="project-details-card-header-title"><i class='bx bx-edit bx-tada'></i>
-                                        Project Type</h4>
-                                    <a href="#" class="purchase-button ms-auto" data-bs-toggle="modal"
-                                        data-bs-target="#Modal-hotel">
-                                        <i class='bx bx-message-square-add bx-tada'></i> Add Project Type</a>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <div class="card-title">
+                                    <h3>Package Hotel</h3>
+                                </div>
+                                <div class="d-flex justify-content-end">
+
+                                    <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#kt_modal_hotel_{{ $package->id }}">Add Hotel</a>
+
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <table class="display table table-striped table-hover basic-datatables"
-                                                    role="grid" aria-describedby="add-row_info">
-                                                    <thead class="">
-                                                        <tr role="row">
-                                                            <th class="text-center">Sl</th>
-                                                            <th class="text-start">Project Type</th>
-                                                            <th class="text-center">Status</th>
-                                                            <th class="text-center">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    {{-- <tbody>
-                                                        @foreach ($project_types as $project_type)
-                                                        <tr role="row" class="odd">
-                                                            <td class="sorting_1 text-center">{{
-                                                                $loop->iteration }}</td>
-                                                            <td class="text-start">{{ $project_type->name }}
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <form
-                                                                    action="{{ route('hajj-hotel.toggle', $project_type->id) }}"
-                                                                    method="POST" style="display: inline;">
-                                                                    @csrf
-                                                                    <button type="submit"
-                                                                        class="btn {{ $project_type->status == 1 ? 'status-box-1' : 'status-box-1' }}">
-                                                                        {{ $project_type->status == 1 ? 'Active'
-                                                                        : 'Inactive' }}
-                                                                    </button>
-                                                                </form>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <div class="form-button-action">
-                                                                    <button class="btn btn-primary btn-link btn-lg me-2"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#Modal-hotel-edit-{{ $project_type->id }}">
-                                                                        <i class='bx bxs-edit bx-tada'></i>
-                                                                    </button>
+                                <div class=" row rounded border border-secondary p-5">
+                                    <div class="table-responsive p-5">
+                                        <table class="table table-row-bordered gy-5">
+                                            <thead>
+                                                <tr class="fw-semibold fs-6 text-muted">
+                                                    <th>Sl</th>
+                                                    <th>Hotel Name</th>
+                                                    <th>Location</th>
+                                                    <th>Details</th>
+                                                    <th>Rating</th>
+                                                    <th>Number Of Review</th>
+                                                    <th>Image</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($package->hotel as $hotel)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $hotel->hotel_name }}</td>
+                                                    <td>{{ $hotel->location }}</td>
+                                                    <td>{!! $hotel->details !!}</td>
+                                                    <td>{{ $hotel->rating }}</td>
+                                                    <td>{{ $hotel->number_review }}</td>
+                                                    <td>
+                                                        @if($hotel->image)
+                                                        <img src="{{ asset('storage/' . $hotel->image) }}"
+                                                            width="96px" height="72px" alt="image">
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($hotel->status)
+                                                        <a href="{{ route('hotel.toggle', $hotel->id) }}"
+                                                            class="badge badge-success">Active</a>
+                                                        @else
+                                                        <a href="{{ route('hotel.toggle', $hotel->id) }}"
+                                                            class="badge badge-danger">Inactive</a>
+                                                        @endif
+                                                    </td>
 
-                                                                    <a href="#" id="delete-project_type-link"
-                                                                        title="delete"
-                                                                        class="btn btn-link btn-danger btn-lg"
-                                                                        data-project_type-id="{{ $project_type->id }}">
-                                                                        <i class='bx bx-trash-alt'></i>
-                                                                    </a>
+                                                    <td>
+                                                        {{-- <a href="{{ route('hotel.details', $hotel->id) }}" --}}
+                                                        <a href="#"
+                                                            class="btn btn-sm btn-light-primary m-2" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="View Details">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-sm btn-light-primary m-2"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#kt_modal_edit_hotel_{{ $hotel->id }}">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-sm btn-light-danger m-2"
+                                                            id="delete-package-link"
+                                                            data-package-id="{{ $hotel->id }}">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </a>
 
-                                                                    <form
-                                                                        id="delete-project_type-form-{{ $project_type->id }}"
-                                                                        action="{{ route('hajj-hotel.destroy', $project_type->id) }}"
-                                                                        method="POST" style="display: none;">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                            @include('admin.system-configuration.additional-setup.hotel.edit-modal')
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody> --}}
-                                                </table>
-                                            </div>
-                                        </div>
+                                                        <form id="delete-package-form-{{ $hotel->id }}"
+                                                            action="{{ route('hotel.destroy', $hotel->id) }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
 
+                                                        @include('admin.tour-package.hajj-package.package-info.hotel.edit-modal')
+                                                    </td>
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

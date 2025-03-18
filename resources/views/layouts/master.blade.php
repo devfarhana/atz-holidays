@@ -50,6 +50,7 @@
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/bootstrap-datetimepicker.min.css">
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/backpack-wala.css">
+
       <style>
          .main-nav li {
             position: relative !important;
@@ -245,11 +246,13 @@
                                             <a href="{{route('aboutus')}}">About Us</a>
                                         </li>
                                         <li>
-                                            <a href="#">News & Blog</a>
+                                            <a href="{{route('blog')}}">News & Blog</a>
                                         </li>
-                                        <li>
+                                        <li><a href="{{route('packageTour')}}">Package Tour</a></li>
+                            <li><a href="{{route('hajjPackage')}}">Hajj & Umrah Package</a></li>
+                                        {{-- <li>
                                             <a href="#">Custom Tour Package</a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="{{route('privacyPolicy')}}">Privacy Policy</a>
                                         </li>
@@ -380,7 +383,9 @@
 
    <!-- Script JS -->
    <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
+   <script src="{{ asset('frontend/assets') }}/js/country.js"></script>
 
+   @stack('script')
 </body>
 
 </html>

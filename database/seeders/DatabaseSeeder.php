@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ContactSeeder::class,
             UserSeeder::class,
             GreetingSeeder::class,
+            BannerImageSeeder::class,
         ]);
     }
 }

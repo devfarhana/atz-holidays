@@ -734,25 +734,7 @@ Template Name: DreamsTour - Bootstrap Template
       input.val(quantity - 1);
     }
   });
-	 //Increment Decrement Numberes
 
-	$('.quantity-right-plus').on('click', function (e) {
-		e.preventDefault();
-		var input = $(this).closest('.custom-increment').find('.input-number');
-		var quantity = parseInt(input.val());
-		// Increment the quantity
-		input.val(quantity + 1);
-	});
-
-	$('.quantity-left-minus').on('click', function (e) {
-		e.preventDefault();
-		var input = $(this).closest('.custom-increment').find('.input-number');
-		var quantity = parseInt(input.val());
-		// Decrement the quantity, but not below 0
-		if (quantity > 0) {
-			input.val(quantity - 1);
-		}
-	});
 
 	// More View
 	if ($('.more-btn').length > 0) {

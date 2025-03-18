@@ -60,7 +60,6 @@
                                     <tr class="fw-semibold fs-6 text-muted">
                                         <th>Sl</th>
                                         <th>Title</th>
-                                        <th>Banner Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -68,12 +67,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>{{ $teamPage->title }}</td>
-                                        <td>
-                                            @if($teamPage->banner_img)
-                                            <img src="{{ asset('storage/' . $teamPage->banner_img) }}" width="70px" height="70px" alt="image"
-                                            class="me-2">
-                                            @endif
-                                        </td>
+                                        
                                         <td>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-light-primary m-2" data-bs-toggle="modal"

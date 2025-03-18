@@ -5,7 +5,7 @@
 @section('content')
 <!-- Breadcrumb -->
 <div class="breadcrumb-bar text-center"
-    style="background: url('{{ asset('storage/' .$aboutus->breadcrumb_image) }}') no-repeat; background-size: cover;">
+    style="background: url('{{ asset('storage/' .$banner->about_banner) }}') no-repeat; background-size: cover; width:100%" >
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-12">

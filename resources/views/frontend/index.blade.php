@@ -145,7 +145,7 @@
                         @if($packageimage->hajj_packages_id == $package->id)
                         <div class="slide-images">
                             <a href="#">
-                                <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid" alt="img">
+                                <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid fixed-size" alt="img">
                             </a>
                         </div>
                         @endif
@@ -299,7 +299,6 @@
     </div>
 </section>
 @endif
-
 <!--Tour Packages-->
 <!-- About Section -->
 @if($aboutus)

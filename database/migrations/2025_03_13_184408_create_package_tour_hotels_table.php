@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('package_tour_hotels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('package_tour_id')->constrained('package_tours')->onDelete('cascade');
+            $table->string('hotel_name')->nullable();
+            $table->string('location')->nullable();
+            $table->text('details')->nullable();
+            $table->string('image')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('number_review')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
