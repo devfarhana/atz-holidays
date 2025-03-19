@@ -8,6 +8,7 @@ use App\Models\PackageFeature;
 use App\Models\PackageTour;
 use App\Models\PackageTourFeature;
 use App\Models\PackageTourImages;
+use App\Models\PackageTourOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -257,32 +258,15 @@ class PackageTourController extends Controller
 
         return redirect()->back()->with('success', 'Image deleted successfully.');
     }
+    public function packageOrder()
+    {
+        $orders = PackageTourOrder::with('package')->get();
+        return view('admin.tour-package.package-tour.order',compact('orders'));
+    }
+    public function packageOrderDetails($id)
+    {
+        $order = PackageTourOrder::with('package')->findOrFail($id);
 
-
-
-
-
-    // public function videoStore(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'video' => 'required|mimes:mp4,avi,mkv|max:51200', // Max size: 50MB
-    //     ]);
-
-    //     $package = PackageTour::findOrFail($id);
-
-    //     // Upload video
-    //     if ($request->hasFile('video')) {
-    //         $videoPath = $request->file('video')->store('package-tour/videos', 'public');
-
-    //         // Save to database with package_tour_id
-    //         PackageTourVideo::create([
-    //             'package_tour_id' => $package->id, // Ensure package_tour_id is provided
-    //             'video' => $videoPath,
-    //         ]);
-
-    //         return back()->with('success', 'Video added successfully!');
-    //     }
-
-    //     return back()->with('error', 'Video upload failed!');
-    // }
+        return view('admin.tour-package.package-tour.order-details',compact('order'));
+    }
 }

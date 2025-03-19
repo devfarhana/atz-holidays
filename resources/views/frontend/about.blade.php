@@ -32,18 +32,18 @@
                     <div class="row align-items-center gx-0">
                         <div class="col-6">
                             <div class="about-img-01">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_1) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_1) }}" alt="img" class="img-fluid about-image">
                             </div>
                             <div class="about-img-03">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_3) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_3) }}" alt="img" class="img-fluid about-image">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="about-img-02">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_2) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_2) }}" alt="img" class="img-fluid about-image">
                             </div>
                             <div class="about-img-04">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_4) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_4) }}" alt="img" class="img-fluid about-image">
                             </div>
                         </div>
                     </div>

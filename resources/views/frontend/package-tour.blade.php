@@ -29,69 +29,69 @@
             <div class="cars-slider owl-dot-bottom owl-carousel wow fadeInUp mt-4" data-wow-delay="1.5">
                 <!-- Tours Grid -->
                 @foreach($tourpackages as $package)
-                <div class="place-item mb-4 flex-fill">
-                    <div class="place-img">
-                        <div class="img-slider image-slide owl-carousel nav-center">
-                            @foreach ($tourpackageimages as $packageimage)
-                            @if($packageimage->package_tour_id == $package->id)
-                            <div class="slide-images">
-                                <a href="#">
-                                    <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid" alt="img">
-                                </a>
-                            </div>
-                            @endif
-                            @endforeach
-
-                        </div>
-                        <div class="fav-item">
-                            <span class="badge d-inline-flex align-items-center">{{ $package->offer }} <br />off</span>
-                            <a href="javascript:void(0);" class="fav-icon selected">
-                                <i class="isax isax-heart5"></i>
+            <div class="place-item mb-4 flex-fill">
+                <div class="place-img">
+                    <div class="img-slider image-slide owl-carousel nav-center">
+                        @foreach ($tourpackageimages as $packageimage)
+                        @if($packageimage->package_tour_id == $package->id)
+                        <div class="slide-images">
+                            <a href="#">
+                                <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid fixed-size" alt="img">
                             </a>
                         </div>
-                    </div>
-                    <div class="place-content custom-padding-sm">
-                        <h5 class="tour-package-title mb-1"><a href="{{route('PackagetourDetails',$package->slug)}}">{{
-                                $package->package_name
-                                }}</a></h5>
-                        <p class="custom-text-sm mb-2"><i class='bx bxs-map'></i>{{ $package->location }}</p>
-                        <div class="tour-quick-overview-box mb-3">
-                            <div class="guest-details2">
-                                <ul>
-                                    <li>
-                                        <h6><i class='bx bx-moon'></i>{{ $package->duration }}</h6>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="d-inline-block vertical-splits">
-                                <i class='bx bx-dots-vertical-rounded bx-flashing'></i>
-                            </span>
-                            <div class="guest-details2 ms-2">
-                                <ul class="list-inline mb-0">
-                                    <li class="text-end list-inline-item">
-                                        @foreach ($package->features as $feature)
-                                        <img class="feature-img" src="{{ asset('storage/' . $feature->icon) }}"
-                                            alt="Feature Icon"
-                                            style="width: 20px; height: 24px; object-fit: contain; display: inline-block; margin-right: 5px;">
-                                        @endforeach
-                                    </li>
-                                </ul>
-                            </div>
+                        @endif
+                        @endforeach
 
+                    </div>
+                    <div class="fav-item">
+                        <span class="badge d-inline-flex align-items-center">{{ $package->offer }} <br />off</span>
+                        <a href="javascript:void(0);" class="fav-icon selected">
+                            <i class="isax isax-heart5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="place-content custom-padding-sm">
+                    <h5 class="tour-package-title mb-1"><a href="{{route('PackagetourDetails',$package->slug)}}">{{
+                            $package->package_name
+                            }}</a></h5>
+                    <p class="custom-text-sm mb-2"><i class='bx bxs-map'></i>{{ $package->location }}</p>
+                    <div class="tour-quick-overview-box mb-3">
+                        <div class="guest-details2">
+                            <ul>
+                                <li>
+                                    <h6><i class='bx bx-moon'></i>{{ $package->duration }}</h6>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between w-100">
-                            <div class="d-flex flex-wrap align-items-center w-50">
-                                <a href="{{route('PackagetourDetails',$package->slug)}}" class="view-tour-btn-sm">VIEW
-                                    PACKAGE</a>
-                            </div>
-                            <div class="d-flex align-items-center flex-wrap">
-                                <h5 class="tour-package-price"><span class="custom-text-s">BDT</span> {{ $package->price }}
-                                </h5>
-                            </div>
+                        <span class="d-inline-block vertical-splits">
+                            <i class='bx bx-dots-vertical-rounded bx-flashing'></i>
+                        </span>
+                        <div class="guest-details2 ms-2">
+                            <ul class="list-inline mb-0">
+                                <li class="text-end list-inline-item">
+                                    @foreach ($package->features as $feature)
+                                    <img class="feature-img" src="{{ asset('storage/' . $feature->icon) }}"
+                                        alt="Feature Icon"
+                                        style="width: 20px; height: 24px; object-fit: contain; display: inline-block; margin-right: 5px;">
+                                    @endforeach
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between w-100">
+                        <div class="d-flex flex-wrap align-items-center w-50">
+                            <a href="{{route('PackagetourDetails',$package->slug)}}" class="view-tour-btn-sm">VIEW
+                                PACKAGE</a>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap">
+                            <h5 class="tour-package-price"><span class="custom-text-s">BDT</span> {{ $package->price }}
+                            </h5>
                         </div>
                     </div>
                 </div>
-                @endforeach
+            </div>
+            @endforeach
                 <!-- /Tours Grid -->
 
             </div>

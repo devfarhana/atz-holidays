@@ -249,12 +249,38 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
+                                <a class="menu-link" {{ Route::currentRouteName() === 'orderPackage' ? 'active' : '' }}
+                                    href="{{route('orderPackage')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-white"> Order List of Hajj & Umrah Package</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
                                 <a class="menu-link" {{ Route::currentRouteName() === 'package-tour.index' ? 'active' : '' }}
                                     href="{{route('package-tour.index')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title text-white">Package Tour</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                               <!--begin:Menu item-->
+                               <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" {{ Route::currentRouteName() === 'packageOrder' ? 'active' : '' }}
+                                    href="{{route('packageOrder')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-white"> Order List of Package Tour</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
