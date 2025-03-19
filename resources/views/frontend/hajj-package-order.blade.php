@@ -119,10 +119,12 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="form-label" for="selectCountry">Country</label>
-                                        <select class="form-control" id="selectCountry" name="country" required>
+                                        <select class="form-control" id="selectCountry" name="select_country">
                                             <option value="" selected>Select Country</option>
                                         </select>
                                     </div>
+                                    <!-- Hidden field to store the old value of the country -->
+                                    <input type="hidden" id="oldCountryValue" value="{{ old('select_country') }}">
                                     <div class="col-lg-6">
                                         <div class="mb-2">
                                             <label class="form-label">Zip Code</label>
@@ -135,9 +137,12 @@
                                             <textarea class="form-control" name="additional_info" rows="4"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 d-flex align-items-center justify-content-between flex-wrap gap-2">
-                                        <a href="{{ url()->previous() }}" class="btn btn-secondary w-40 search-btn ms-0 fs-14 mt-3">Back</a>
-                                        <button type="submit" class="btn btn-primary search-btn ms-0 w-40 fs-14 mt-3">Confirm</button>
+                                    <div
+                                        class="col-lg-6 d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                        <a href="{{ url()->previous() }}"
+                                            class="btn btn-secondary w-40 search-btn ms-0 fs-14 mt-3">Back</a>
+                                        <button type="submit"
+                                            class="btn btn-primary search-btn ms-0 w-40 fs-14 mt-3">Confirm</button>
                                     </div>
                                 </div>
                             </form>

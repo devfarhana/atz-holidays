@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     var select = document.getElementById("selectCountry");
     var oldCountryValue = document.getElementById("oldCountryValue").value;

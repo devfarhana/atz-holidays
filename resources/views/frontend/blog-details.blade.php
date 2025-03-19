@@ -122,8 +122,10 @@
 
                                 <h6 class="mb-3">Write A Comment</h6>
                                 <div>
-                                    <form action="{{route('blog-comment.store')}}" method="POST">
+
+                                    <form action="{{route('blog-comment.store',$blog->slug)}}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -147,7 +149,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-sm btn-primary">Post Comment</button>
+                                            <button type="submit" class="btn btn-primary">Post Comment</button>
                                         </div>
                                     </form>
 
