@@ -37,7 +37,7 @@
             <!-- Blog Item-->
             <div class="blog-item wow fadeInUp" data-wow-delay="0.2s">
                 <a href="{{$advertisement->url}}" class="blog-img">
-                    <img src="{{ asset('storage/' .$advertisement->image) }}" alt="img">
+                    <img class="advertise-img" src="{{ asset('storage/' .$advertisement->image) }}" alt="img">
                 </a>
             </div>
             <!-- /Blog Item-->
@@ -85,7 +85,7 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="destination-set wow fadeInUp">
                                 <div class="destination-img">
-                                    <img src="{{ asset('storage/' . $destination->image) }}" alt="Img">
+                                    <img src="{{ asset('storage/' . $destination->image) }}" class="destination-image" alt="Img">
                                 </div>
                                 <div
                                     class="destination-content d-flex align-items-center justify-content-center flex-column w-100">
@@ -233,7 +233,7 @@
                         @if($packageimage->package_tour_id == $package->id)
                         <div class="slide-images">
                             <a href="#">
-                                <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid" alt="img">
+                                <img src="{{ asset('storage/' . $packageimage->image) }}" class="img-fluid fixed-size" alt="img">
                             </a>
                         </div>
                         @endif
@@ -310,18 +310,18 @@
                     <div class="row align-items-center gx-0">
                         <div class="col-6">
                             <div class="about-img-01">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_1) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_1) }}" alt="img" class="img-fluid about-img">
                             </div>
                             <div class="about-img-03">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_3) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_3) }}" alt="img" class="img-fluid about-img">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="about-img-02">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_2) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_2) }}" alt="img" class="img-fluid about-img">
                             </div>
                             <div class="about-img-04">
-                                <img src="{{ asset('storage/' .$aboutus->about_img_4) }}" alt="img" class="img-fluid">
+                                <img src="{{ asset('storage/' .$aboutus->about_img_4) }}" alt="img" class="img-fluid about-img">
                             </div>
                         </div>
                     </div>
@@ -641,7 +641,7 @@
             <div class="col-lg-4 col-md-6 d-flex">
                 <div class="blog-item blog-wrap flex-fill wow fadeInUp" data-wow-delay="0.2s">
                     <a href="{{ route('blog.details', $blog->slug) }}" class="blog-img">
-                        <img src="{{ asset('storage/' . $blog->blog_image) }}" alt="img">
+                        <img class="blog-size" src="{{ asset('storage/' . $blog->blog_image) }}" alt="img">
                         <span class="badge bg-white text-gray-9 fs-14 fw-medium">{{ $blog->blogCategory->name }}</span>
                     </a>
                     <div class="blog-content">

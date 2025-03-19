@@ -14,6 +14,6 @@ class HajjPackageOrder extends Model
 
     public function package()
     {
-        return $this->belongsTo(HajjPackage::class);
+        return $this->belongsTo(HajjPackage::class, 'hajj_packages_id');
     }
 }

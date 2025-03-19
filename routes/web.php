@@ -164,6 +164,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/hajj-package/destroy/{id}', 'destroy')->name('hajj-package.destroy');
         Route::post('/hajj-package/images', 'hajimagesStore')->name('hajjimages.store');
         Route::post('/hajj-package/images/{id}','imagesDestroy')->name('images.destroy');
+        Route::get('/hajj-package/order', 'orderPackage')->name('orderPackage');
+        Route::get('/hajj-package/order-details/{id}', 'orderDetails')->name('orderDetails');
     });
     Route::prefix('/dashboard')->controller(PackageTourController::class)->group(function () {
         Route::get('/package-tour', 'index')->name('package-tour.index');
@@ -178,6 +180,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/package-tour/feature/{id}', 'featureUpdate')->name('package-feature.update');
         Route::delete('/package-tour/destroy/{id}', 'destroy')->name('package-tour.destroy');
         Route::post('/package-tour/{id}/package-images', 'imagesStore')->name('package-tour-images.store');
+        Route::get('/package-tour/order', 'packageOrder')->name('packageOrder');
+        Route::get('/package-tour/order-details/{id}', 'packageOrderDetails')->name('packageOrderDetails');
 
     });
 

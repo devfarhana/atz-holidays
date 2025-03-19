@@ -82,8 +82,7 @@ class IndexController extends Controller
 
         $contact = Contact::first();
 
-        $products = Product::where('status', 1)->latest()->take(3)->get();
-        $latestNews = News::latest()->take(3)->get();
+     
         return view(
             'frontend.index',
             compact(
@@ -108,8 +107,6 @@ class IndexController extends Controller
                 'hotDeals',
                 'packagetourimages',
                 'imageshajjpackage',
-                'products',
-                'latestNews',
                 'contact',
             )
         );

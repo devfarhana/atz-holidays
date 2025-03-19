@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HajjPackage;
 use App\Models\HajjPackageFeature;
 use App\Models\HajjPackageImages;
+use App\Models\HajjPackageOrder;
 use App\Models\HajjPackageVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -257,8 +258,20 @@ class HajjPackageController extends Controller
         return redirect()->back()->with('success', 'Image deleted successfully.');
     }
 
+    public function orderPackage()
+    {
+        $orders = HajjPackageOrder::with('package')->get();
+        return view('admin.tour-package.hajj-package.order',compact('orders'));
+    }
+    public function orderDetails($id)
+    {
+        $order = HajjPackageOrder::with('package')->findOrFail($id);
 
-    
+        return view('admin.tour-package.hajj-package.order-details',compact('order'));
+    }
+
+
+
 }
 
 
