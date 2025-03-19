@@ -56,17 +56,21 @@ class BlogController extends Controller
 
         ]);
     }
-    public function blogComment(Request $request) {
+    public function blogComment(Request $request ,$slug) {
 
-        // dd($request->all());
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+
 
         $request->validate([
+
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|max:255',
             'message' => 'nullable|string|max:255',
         ]);
 
         $comments = new BlogMessage();
+        $comments->blog_id = $blog->id;
+        $comments->name = $request->name;
         $comments->name = $request->name;
         $comments->email = $request->email;
         $comments->message = $request->message;

@@ -43,7 +43,7 @@ Route::get('/home/aboutus', [FrontEndAboutUsController::class, 'aboutUs'])->name
 Route::get('/home/team', [ExpertTeamController::class, 'team'])->name('team');
 Route::get('/home/blog', [FrontEndBlogController::class, 'blog'])->name('blog');
 Route::get('/home/blog/details/{slug}', [FrontEndBlogController::class, 'blogDetails'])->name('blog.details');
-Route::post('/home/blog/blog-comment', [FrontEndBlogController::class, 'blogComment'])->name('blog-comment.store');
+Route::post('/home/blog/blog-comment/{slug}', [FrontEndBlogController::class, 'blogComment'])->name('blog-comment.store');
 Route::post('/submit-contact-form', [ContactController::class, 'submit'])->name('contact.submit');
 Route::get('/home/hajj-packages', [Packagecontroller::class, 'hajjPackage'])->name('hajjPackage');
 Route::get('/home/hajj-package/details/{slug}', [Packagecontroller::class, 'HajjpackageDetails'])->name('HajjpackageDetails');
@@ -53,6 +53,8 @@ Route::post('/home/hajj-package/book-now/{slug}/order', [Packagecontroller::clas
 Route::get('/home/package-tours', [Packagecontroller::class, 'packageTour'])->name('packageTour');
 Route::get('/home/package-tour/details/{slug}', [Packagecontroller::class, 'PackagetourDetails'])->name('PackagetourDetails');
 Route::get('/home/package-tour/book-now/{slug}', [Packagecontroller::class, 'packageBook'])->name('packageBook');
+Route::post('/home/package-tour/book-now/{slug}/order', [Packagecontroller::class, 'packageorder'])->name('packageorder.submit');
+
 
 
 Route::resource('/home/contact', ContactController::class);

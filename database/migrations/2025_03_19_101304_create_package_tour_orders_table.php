@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hajj_package_orders', function (Blueprint $table) {
+        Schema::create('package_tour_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hajj_packages_id')->constrained('hajj_packages')->onDelete('cascade');
+            $table->foreignId('package_tour_id')->constrained('package_tours')->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hajj_package_orders');
+        Schema::dropIfExists('package_tour_orders');
     }
 };
